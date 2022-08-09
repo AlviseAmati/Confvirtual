@@ -37,6 +37,7 @@ function ControlloModifica($sql_link, $query, $fraseSi, $fraseNo) { #redirect
 
 
 
+
 function ControllaStringa($newname, $name) {
     if( !empty($newname) ) {
         return $newname;
@@ -45,53 +46,6 @@ function ControllaStringa($newname, $name) {
     } 
 }
 
-function StampaTab($sql_link, $query, $num) {
-    $sql_link->next_result();
-    $result = mysqli_query($sql_link, $query);
-      if(mysqli_num_rows($result) > 0) {
-
-        echo "<table class='table-responsive'>";
-        echo "<thead> <tr>";
-
-        $field = $result->fetch_fields();
-        $fields = array();
-        $j = 0;
-        foreach ($field as $col) {
-            echo "<th>" . $col->name . "</th>";
-            array_push($fields, array(++$j, $col->name));
-        }
-        ?>
-        
-        <th> <button class='btn'  onclick="InserisciDato('<?php echo $num ?>')"> ➕ </button> </th>
-
-        <?php
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-
-        while ($row = $result->fetch_array()) {
-            echo "<tr>";
-            for ($i = 0; $i < sizeof($fields); $i++) {
-                $fieldname = $fields[$i][1];
-                $filedvalue = $row[$fieldname];
-                echo "<td>" . $filedvalue . "</td>";
-            }
-
-            $value = $row[0];
-            ?>
-
-            <td> <button class='btn' onclick="ModificaDato('<?php echo $value ?>' , '<?php echo $num ?>')"> Modifica </button> </td>
-            <td> <button class='btn' onclick="EliminaDato('<?php echo $value ?>' , '<?php echo $num ?>')"> Elimina </button> </td>
-
-            <?php
-            echo "</tr>";
-        }
-        echo "</tbody>";
-        echo "</table>";
-    } else {
-        echo '<center> <h4> Non ci sono risultati </h4> </center>';
-    }
-}
 
 function StampaFormModifica($sql_link, $query, $action, $name) {
     $result = mysqli_query($sql_link, $query);
