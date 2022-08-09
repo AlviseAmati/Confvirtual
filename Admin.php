@@ -133,7 +133,79 @@
         
         ?>
 
+          <h3>Inserimento presentazione in una Sessione:</h3>
+          <form method="POST" action="Actions/inserisciPresentazione.php">
+            <label for="NumSequenze">Numero Sequenze:</label><br>
+            <input type="text" id="NumSequenze" name="NumSequenze" value="5"><br>
+            <label for="OrarioFine">Orario Fine:</label><br>
+            <input type="text" id="OrarioFine" name="OrarioFine" value="10:00:00"><br>
+            <label for="OrarioInizio">Orario Inizio:</label><br>
+            <input type="text" id="OrarioInizio" name="OrarioInizio" value="08:00:00"><br>
+            <label for="Titolo">Titolo:</label><br>
+            <input type="text" id="Titolo" name="Titolo" value="Art/Tout 1"><br>
+            <label for="Pdf">Pdf:</label><br>
+            <input type="text" id="Pdf" name="Pdf" value="pdf1"><br>
+            <label for="NumeroPagine">Numero Pagine:</label><br>
+            <input type="text" id="NumeroPagine" name="NumeroPagine" value="23"><br>
+            <label for="StatoSvolgimento">Stato Svolgimento:</label><br>
+            <input type="text" id="StatoSvolgimento" name="StatoSvolgimento" value="Coperto / Non Coperto"><br>
+            <label for="Abstract">Abstract:</label><br>
+            <input type="text" id="Abstract" name="Abstract" value="......"><br>
+            <label for="IdSessione">Id Sessione:</label><br>
+            <input type="text" id="IdSessione" name="IdSessione" value="1"><br>
+            <label for="Tipo">Tipo:</label><br>
+            <input type="text" id="Tipo" name="Tipo" value="Articolo / Tutorial"><br>
+            <label for="Username">Username:</label><br>
+            <input type="text" id="Username" name="Username" value="Alvi"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+          <h3>Visualizza Presentazioni:</h3>
+          <?php 
+          
+          $result = mysqli_query($db, "SELECT * FROM presentazione");
+          if(mysqli_num_rows($result) > 0) {
 
+            echo "<table class='table table-dark table-striped'>";
+            echo "<thead> <tr>";
+    
+            $field = $result->fetch_fields();
+            $fields = array();
+            $j = 0;
+            foreach ($field as $col) {
+                echo "<th>" . $col->name . "</th>";
+                array_push($fields, array(++$j, $col->name));
+            }
+
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+    
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+
+                for ($i = 0; $i < sizeof($fields); $i++) {
+                    $fieldname = $fields[$i][1];
+                    $filedvalue = $row[$fieldname];
+                    echo "<td>" . $filedvalue . "</td>";
+                }
+    
+                $value = $row[0];
+                #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+         ?>
+
+              
+              <td><form action="Actions/eliminaPresentazione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+              
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
+            }
+        
+        ?>
 
 
 
