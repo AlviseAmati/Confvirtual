@@ -23,18 +23,72 @@
     </form>
     <br>
     <h3>Visualizza Conferenze:</h3>
-    <!--
-
-    <th scope="col">Anno Edizione</th>
-            <th scope="col">Acronimo</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Data Svolgimento</th>
-            <th scope="col">Logo </th>
-            <th scope="col">Bottone </th>
-     -->
+   
           <?php 
           
-          $result = mysqli_query($db, "SELECT * FROM conferenza");
+            $result = mysqli_query($db, "SELECT * FROM conferenza");
+            if(mysqli_num_rows($result) > 0) {
+
+              echo "<table class='table table-dark table-striped'>";
+              echo "<thead> <tr>";
+      
+              $field = $result->fetch_fields();
+              $fields = array();
+              $j = 0;
+              foreach ($field as $col) {
+                  echo "<th>" . $col->name . "</th>";
+                  array_push($fields, array(++$j, $col->name));
+              }
+
+              echo "</tr>";
+              echo "</thead>";
+              echo "<tbody>";
+      
+              while ($row = $result->fetch_array()) {
+                  echo "<tr>";
+
+                  for ($i = 0; $i < sizeof($fields); $i++) {
+                      $fieldname = $fields[$i][1];
+                      $filedvalue = $row[$fieldname];
+                      echo "<td>" . $filedvalue . "</td>";
+                  }
+      
+                  $value = $row[0];
+                  #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+           ?>
+
+                
+                <td><form action="Actions/eliminaConferenza.php" method="POST"><input type="hidden" name="idConferenza" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+                
+          <?php
+                      echo "</tr>";
+                  }
+                  echo "</tbody>";
+                  echo "</table>";
+              } else {
+                  echo '<center> <h4> Non ci sono risultati </h4> </center>';
+              }
+          
+          ?>
+          <h3>Crea Sessione:</h3>
+          <form method="POST" action="Actions/creaSessione.php">
+            <label for="NumeroPresentazioni">Numero Presentazioni:</label><br>
+            <input type="text" id="NumeroPresentazioni" name="NumeroPresentazioni" value="10"><br>
+            <label for="LinkTeams">Link Teams:</label><br>
+            <input type="text" id="LinkTeams" name="LinkTeams" value="https://"><br>
+            <label for="OraFine">Ora Fine:</label><br>
+            <input type="text" id="OraFine" name="OraFine" value="10:00:00"><br>
+            <label for="OraInizio">Ora Inizio:</label><br>
+            <input type="text" id="OraInizio" name="OraInizio" value="08:00:00"><br>
+            <label for="Titolo">Titolo:</label><br>
+            <input type="text" id="Titolo" name="Titolo" value="Sessione1"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+          <h3>Visualizza Sessioni:</h3>
+
+          <?php 
+          
+          $result = mysqli_query($db, "SELECT * FROM sessione");
           if(mysqli_num_rows($result) > 0) {
 
             echo "<table class='table table-dark table-striped'>";
@@ -63,30 +117,26 @@
     
                 $value = $row[0];
                 #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
-                ?>
+         ?>
 
-                
-                <td><form action="Actions/eliminaConferenza.php" method="POST"><input type="hidden" name="idConferenza" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
-                
-                <?php
-                echo "</tr>";
+              
+              <td><form action="Actions/eliminaSessione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+              
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
             }
-            echo "</tbody>";
-            echo "</table>";
-        } else {
-            echo '<center> <h4> Non ci sono risultati </h4> </center>';
-        }
-          
-          ?>
-          <!--
-            <tr>
-            <th scope="row">1</th>
-            <td>l</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            </tr> -->
+        
+        ?>
+
+
+
+
+
     <div id="Catalogo"><a id="Scopri" href="/NoloNolo/Progetto_TW/NoloNolo/Actions/catalogo.php">Scopri le nostre conferenze</a></div>
   </div>
 
