@@ -20,12 +20,23 @@
   if ($result->num_rows > 0) {
     while($row = $result->fetch_row()) {
       $_SESSION["utente"] = $row[0];
-      $_SESSION["tipoUtente"] = $row[4];
-      echo '<script type="text/javascript">
-        alert("Autententicazione completata con successo");
-        location.href = "/Progetto_Basi/confvirtual/index.php";
-      </script>';
-
+      $_SESSION["tipo"] = $row[6];
+        if($row[6] == 'Amministratore'){
+            echo '<script type="text/javascript">
+            alert("Autententicazione completata con successo");
+            location.href = "/Progetto_Basi/confvirtual/Admin.php";
+          </script>';
+        } 
+        else if($row[6] == 'Utente'||$row[6] == 'Speaker'||$row[6] == 'Presenter'){
+            echo '<script type="text/javascript">
+            alert("Autententicazione completata con successo");
+            location.href = "/Progetto_Basi/confvirtual/User.php";
+          </script>';
+        }
+        else{
+          echo  $_SESSION["tipoUtente"];
+        }
+      
     }
   } else {
     echo '<script type="text/javascript">

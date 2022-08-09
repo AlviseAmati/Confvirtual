@@ -1,3 +1,11 @@
 div.container {
     display: inline-block;
 }
+
+footer{
+    color: white !important;
+}
+
+pre{
+    color: white !important;
+}
