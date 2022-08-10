@@ -6,7 +6,7 @@
   $IdPresentazione = $_POST['IdPresentazione'];
 
   //echo $IdConferenza;
-
+//prova per branch
   $sp = "DELETE FROM presentazione WHERE IdPresentazione = ".$IdPresentazione."";
 
   //echo $sp;
