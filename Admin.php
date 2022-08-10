@@ -269,14 +269,129 @@
             <input type="text" id="IdPresentazione" name="IdPresentazione" value="1"><br><br>
             <input type="submit" value="Submit">
           </form>
-          <h4>Visualizzare tabella presentazioni sopra</h>
+          <h4>Visualizzare tabella presentazioni sopra</h4> <br><br>
+
+          <h4>Inserimento valutazioni presentazioni:</h4>
+          <form method="POST" action="Actions/inserimentoValutazioni.php">
+            <label for="Username">Username:</label><br>
+            <input type="text" id="Username" name="Username" value="Alvi"><br>
+            <label for="IdPresentazione">IdPresentazione:</label><br>
+            <input type="text" id="IdPresentazione" name="IdPresentazione" value="1"><br>
+            <label for="Voto">Voto:</label><br>
+            <input type="text" id="Voto" name="Voto" value="1"><br>
+            <label for="Note">Note:</label><br>
+            <input type="text" id="Note" name="Note" value="nota"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+
+          <h4>Visualizza valutazioni presentazioni:</h4>
+
+          <?php 
+          
+          $result = mysqli_query($db, "SELECT * FROM valuta");
+          if(mysqli_num_rows($result) > 0) {
+
+            echo "<table class='table table-dark table-striped'>";
+            echo "<thead> <tr>";
+    
+            $field = $result->fetch_fields();
+            $fields = array();
+            $j = 0;
+            foreach ($field as $col) {
+                echo "<th>" . $col->name . "</th>";
+                array_push($fields, array(++$j, $col->name));
+            }
+
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+    
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+
+                for ($i = 0; $i < sizeof($fields); $i++) {
+                    $fieldname = $fields[$i][1];
+                    $filedvalue = $row[$fieldname];
+                    echo "<td>" . $filedvalue . "</td>";
+                }
+    
+                $value = $row[0];
+                $Id = $row[1];
+                #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+         ?>
+
+            <td><form action="Actions/eliminaValutazioni.php" method="POST"><input type="hidden" name="Username" value="<?php  echo $value; ?>"></input><input type="hidden" name="IdPresentazione" value="<?php  echo $Id; ?>"></input><button type="submit"> Elimina </button></form> </td>
+
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
+            }
+        
+        ?>
+        <h4>Inserimento Sponsor:</h4>
+          <form method="POST" action="Actions/inserimentoSponsor.php">
+            <label for="Nome">Nome:</label><br>
+            <input type="text" id="Nome" name="Nome" value="Alvi"><br>
+            <label for="ImmagineLogo">ImmagineLogo:</label><br>
+            <input type="text" id="ImmagineLogo" name="ImmagineLogo" value="http"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+          <h4>Visualizza Sponsor:</h4>
+          <?php 
+          
+          $result = mysqli_query($db, "SELECT * FROM sponsor");
+          if(mysqli_num_rows($result) > 0) {
+
+            echo "<table class='table table-dark table-striped'>";
+            echo "<thead> <tr>";
+    
+            $field = $result->fetch_fields();
+            $fields = array();
+            $j = 0;
+            foreach ($field as $col) {
+                echo "<th>" . $col->name . "</th>";
+                array_push($fields, array(++$j, $col->name));
+            }
+
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+    
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+
+                for ($i = 0; $i < sizeof($fields); $i++) {
+                    $fieldname = $fields[$i][1];
+                    $filedvalue = $row[$fieldname];
+                    echo "<td>" . $filedvalue . "</td>";
+                }
+    
+                $value = $row[0];
+                $Id = $row[1];
+                #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+         ?>
+
+            <td><form action="Actions/eliminaSponsor.php" method="POST"><input type="hidden" name="IdSponsor" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
+            }
+        
+        ?>
 
 
 
 
-
-    <div id="Catalogo"><a id="Scopri" href="/NoloNolo/Progetto_TW/NoloNolo/Actions/catalogo.php">Scopri le nostre conferenze</a></div>
-  </div>
+    
 
   <div class="container textarea">
     <div class="row align-items-center justify-content-center margin-top col-12"> 
