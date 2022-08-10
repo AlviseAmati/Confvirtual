@@ -1,21 +1,61 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white col-lg-12">
   <div class="container">
-    <a class="navbar-brand" href="/Progetto_Basi/confvirtual/index.php">
+    <a class="navbar-brand" href="/Progetto_Basi/confvirtual/Home.php">
       <h2> <b> CONFVIRTUAL </b> </h2> 
     </a>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
     <?php 
-    session_start();
+   
+
+    // Check the session
+    $status = session_status();
+    if ($status == PHP_SESSION_NONE) {
+      session_start();
+    } else
+    if ($status == PHP_SESSION_ACTIVE || $status == PHP_SESSION_DISABLED) {
+      session_destroy();
+      session_start();
+    }
+  
     if (isset($_SESSION['utente'])) {
     ?>
-        <li class="nav-item">
-          <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/PaginaUtente.php"> Il mio profilo </a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
-        </li>
+    <?php
+        if($_SESSION["tipo"] == 'Amministratore'){
+            echo '<li class="nav-item">
+                 <a class="nav-link" href="/Progetto_Basi/confvirtual/Admin.php"> Il mio profilo </a>
+                </li> 
+                <li class="nav-item">
+                 <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
+                 </li>';
+        } 
+        else if($_SESSION["tipo"] == 'Utente'){
+          echo '<li class="nav-item">
+              <a class="nav-link" href="/Progetto_Basi/confvirtual/Utente.php"> Il mio profilo </a>
+               </li> 
+               <li class="nav-item">
+               <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
+               </li>';
+        }
+        else if($_SESSION["tipo"]  == 'Speaker'){
+          echo '<li class="nav-item">
+              <a class="nav-link" href="/Progetto_Basi/confvirtual/Speaker.php"> Il mio profilo </a>
+               </li> 
+               <li class="nav-item">
+               <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
+               </li>';
+        }
+        else if($_SESSION["tipo"]  == 'Presenter'){
+          echo '<li class="nav-item">
+              <a class="nav-link" href="/Progetto_Basi/confvirtual/Presenter.php"> Il mio profilo </a>
+               </li> 
+               <li class="nav-item">
+               <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
+               </li>';
+        }
+        
+        ?>
     <?php
     } else {
     ?>
