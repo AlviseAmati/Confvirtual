@@ -3,14 +3,13 @@
   include 'funzioniPhp.php';
 
   #i nomi dentro la variabile POST devono essere uguale al name nel form di la
+  $Username = $_POST['Username'];
   $IdPresentazione = $_POST['IdPresentazione'];
 
-  //echo $IdConferenza;
-
-  $sp = "DELETE FROM presentazione WHERE IdPresentazione = ".$IdPresentazione."";
-
-  //echo $sp;
-  $fSi = "Eliminazione presentazione con Successo!";
-  $fNo = "Errore nell invio della richiesta";
+  $sp = "call ASSOCIA_SPEAKER ('$Username', '$IdPresentazione')";
+  $fSi = "Associazione Speaker avvenuta con Successo!";
+  $fNo = "Errore nell'invio della richiesta";
+ 
+  #echo $sp;
   ControlloModifica($db, $sp, $fSi, $fNo);   
 ?> 

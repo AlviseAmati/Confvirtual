@@ -194,7 +194,7 @@
          ?>
 
               
-              <td><form action="Actions/eliminaPresentazione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+              <td><form action="Actions/eliminaPresentazione.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
               
         <?php
                     echo "</tr>";
@@ -206,6 +206,72 @@
             }
         
         ?>
+        <h3>Associa Speaker a presentazione Tutorial:</h3>
+          <form method="POST" action="Actions/associaSpeaker.php">
+            <label for="Username">Username:</label><br>
+            <input type="text" id="Username" name="Username" value="Alvi"><br>
+            <label for="IdPresentazione">IdPresentazione:</label><br>
+            <input type="text" id="IdPresentazione" name="IdPresentazione" value="1"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+          <h3>Visualizza Associazioni:</h3>
+          <?php 
+          
+          $result = mysqli_query($db, "SELECT * FROM svolgespeaker");
+          if(mysqli_num_rows($result) > 0) {
+
+            echo "<table class='table table-dark table-striped'>";
+            echo "<thead> <tr>";
+    
+            $field = $result->fetch_fields();
+            $fields = array();
+            $j = 0;
+            foreach ($field as $col) {
+                echo "<th>" . $col->name . "</th>";
+                array_push($fields, array(++$j, $col->name));
+            }
+
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+    
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+
+                for ($i = 0; $i < sizeof($fields); $i++) {
+                    $fieldname = $fields[$i][1];
+                    $filedvalue = $row[$fieldname];
+                    echo "<td>" . $filedvalue . "</td>";
+                }
+    
+                $value = $row[0];
+                $Id = $row[1];
+                #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+         ?>
+
+            <td><form action="Actions/eliminaAssociazioneSpeaker.php" method="POST"><input type="hidden" name="Username" value="<?php  echo $value; ?>"></input><input type="hidden" name="IdPresentazione" value="<?php  echo $Id; ?>"></input><button type="submit"> Elimina </button></form> </td>
+
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
+            }
+        
+        ?>
+        <h3>Associa Presenter ad un Articolo:</h3>
+          <form method="POST" action="Actions/associaPresenter.php">
+            <label for="Username">Username:</label><br>
+            <input type="text" id="Username" name="Username" value="Alvi"><br>
+            <label for="IdPresentazione">IdPresentazione:</label><br>
+            <input type="text" id="IdPresentazione" name="IdPresentazione" value="1"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+          <h4>Visualizzare tabella presentazioni sopra</h>
+
+
 
 
 
