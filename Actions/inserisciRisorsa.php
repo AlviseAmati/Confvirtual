@@ -4,7 +4,9 @@
   session_start();
   #i nomi dentro la variabile POST devono essere uguale al name nel form di la
   $Username = $_SESSION['utente'];
-  $Iduni = $_POST['Iduni'];
+  $LinkWeb = $_POST['LinkWeb'];
+  $Descrizione = $_POST['Descrizione'];
+  $IdPresentazione = $_POST['IdPresentazione'];
     
   $sp = 'UPDATE utente SET IdUniversita = "'.$Iduni.'" WHERE Username= "'.$Username.'"';
   $fSi = "Inserimento Universita con Successo!";
