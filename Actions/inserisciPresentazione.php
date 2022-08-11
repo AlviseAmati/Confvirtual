@@ -1,11 +1,12 @@
+<?php date_default_timezone_set("Europe/Rome"); ?>
 <?php
   include 'connessioneDB.php';
   include 'funzioniPhp.php';
 
   #i nomi dentro la variabile POST devono essere uguale al name nel form di la
   $NumSequenze = $_POST['NumSequenze'];
-  $OrarioFine = date("h:i:sa", strtotime($_POST['OrarioFine']));
-  $OrarioInizio = date("h:i:sa", strtotime($_POST['OrarioInizio']));
+  $OrarioFine = date("h:i:s", strtotime($_POST['OrarioFine']));
+  $OrarioInizio = date("h:i:s", strtotime($_POST['OrarioInizio']));
   $Titolo = $_POST['Titolo'];
   $Pdf = $_POST['Pdf'];
   $NumeroPagine = $_POST['NumeroPagine'];

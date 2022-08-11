@@ -1,3 +1,4 @@
+<?php date_default_timezone_set("Europe/Rome"); ?>
 <?php
   include 'connessioneDB.php';
   include 'funzioniPhp.php';

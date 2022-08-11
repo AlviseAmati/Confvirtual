@@ -156,7 +156,7 @@
                       #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
           ?>
     
-          <td><form action="Actions/visualizzaSessione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Visualizza </button></form> </td>
+          <td><form action="Actions/visualizzaSessione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><input type="hidden" name="OraFine" value="<?php  echo $row[3]; ?>"></input><input type="hidden" name="OraInizio" value="<?php  echo $row[4]; ?>"></input><button type="submit"> Visualizza </button></form> </td>
             
           <?php
                   echo "</tr>";
@@ -169,98 +169,7 @@
 
           ?>
 
-<h2>Visualizza le  Presentazioni in ogni sessione:</h2>
 
-          <?php  
-                
-                $result = mysqli_query($db, "SELECT * FROM presentazione");
-                if(mysqli_num_rows($result) > 0) {
-
-                  echo "<table class='table table-dark table-striped'>";
-                  echo "<thead> <tr>";
-          
-                  $field = $result->fetch_fields();
-                  $fields = array();
-                  $j = 0;
-                  foreach ($field as $col) {
-                      echo "<th>" . $col->name . "</th>";
-                      array_push($fields, array(++$j, $col->name));
-                  }
-
-                  echo "</tr>";
-                  echo "</thead>";
-                  echo "<tbody>";
-          
-                  while ($row = $result->fetch_array()) {
-                      echo "<tr>";
-
-                      for ($i = 0; $i < sizeof($fields); $i++) {
-                          $fieldname = $fields[$i][1];
-                          $filedvalue = $row[$fieldname];
-                          echo "<td>" . $filedvalue . "</td>";
-                      }
-          
-                      $value = $row[0];
-                      #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
-          ?>
-
-            
-          <?php
-                  echo "</tr>";
-              }
-              echo "</tbody>";
-              echo "</table>";
-          } else {
-              echo '<center> <h4> Non ci sono risultati </h4> </center>';
-          }
-
-          ?>
-
-<h2>Visualizza le chat delle sessioni:</h2>
-
-          <?php  
-                
-                $result = mysqli_query($db, "SELECT * FROM messaggio");
-                if(mysqli_num_rows($result) > 0) {
-
-                  echo "<table class='table table-dark table-striped'>";
-                  echo "<thead> <tr>";
-          
-                  $field = $result->fetch_fields();
-                  $fields = array();
-                  $j = 0;
-                  foreach ($field as $col) {
-                      echo "<th>" . $col->name . "</th>";
-                      array_push($fields, array(++$j, $col->name));
-                  }
-
-                  echo "</tr>";
-                  echo "</thead>";
-                  echo "<tbody>";
-          
-                  while ($row = $result->fetch_array()) {
-                      echo "<tr>";
-
-                      for ($i = 0; $i < sizeof($fields); $i++) {
-                          $fieldname = $fields[$i][1];
-                          $filedvalue = $row[$fieldname];
-                          echo "<td>" . $filedvalue . "</td>";
-                      }
-          
-                      $value = $row[0];
-                      #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
-          ?>
-
-          <?php
-                  echo "</tr>";
-              }
-              echo "</tbody>";
-              echo "</table>";
-          } else {
-              echo '<center> <h4> Non ci sono risultati </h4> </center>';
-          }
-
-          ?>
 
 
 
