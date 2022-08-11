@@ -53,6 +53,7 @@
             #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
 ?>
 
+<td><form action="./preferenzaPresentazione.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $row[0]; ?>"></input><button type="submit"> Aggiungi ai preferiti </button></form> </td>
   
 <?php
         echo "</tr>";

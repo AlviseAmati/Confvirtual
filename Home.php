@@ -169,6 +169,54 @@
 
           ?>
 
+<h2>Visualizza le  tue presentazioni favorite:</h2>
+
+<?php  
+      
+      $result = mysqli_query($db, "SELECT * FROM preferenza WHERE Username= '".$_SESSION['utente']."'");
+      if(mysqli_num_rows($result) > 0) {
+
+        echo "<table class='table table-dark table-striped'>";
+        echo "<thead> <tr>";
+
+        $field = $result->fetch_fields();
+        $fields = array();
+        $j = 0;
+        foreach ($field as $col) {
+            echo "<th>" . $col->name . "</th>";
+            array_push($fields, array(++$j, $col->name));
+        }
+
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+
+        while ($row = $result->fetch_array()) {
+            echo "<tr>";
+
+            for ($i = 0; $i < sizeof($fields); $i++) {
+                $fieldname = $fields[$i][1];
+                $filedvalue = $row[$fieldname];
+                echo "<td>" . $filedvalue . "</td>";
+            }
+
+            $value = $row[0];
+            #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+?>
+
+
+  
+<?php
+        echo "</tr>";
+    }
+    echo "</tbody>";
+    echo "</table>";
+} else {
+    echo '<center> <h4> Non ci sono risultati </h4> </center>';
+}
+
+?>
+
 
 
 

@@ -69,6 +69,8 @@ function ControlloModificaMessaggio($sql_link, $query, $fraseSi, $fraseNo) { #re
 
 
 
+
+
 function ControllaStringa($newname, $name) {
     if( !empty($newname) ) {
         return $newname;
