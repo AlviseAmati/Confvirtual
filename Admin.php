@@ -5,6 +5,9 @@
 
 <title>Homepage</title>
 
+
+<td><button  type="submit"><a href="./Home.php"> Vai alla Home</a> </button></form> </td>
+
 <section>
   <div class="col-12">
     <h1>Operazioni Admin:</h1>

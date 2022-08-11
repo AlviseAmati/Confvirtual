@@ -1,8 +1,14 @@
 <?php require('./Components/head.php'); ?>
 <?php require('./Components/navbar.php'); ?>
 <?php require('./Actions/Authentication/ControlloUtente.php'); ?>
+<?php require('./Actions/connessioneDB.php'); ?>
 
 <title>Homepage</title>
+<h1 style="text-align: center;"> Benvenuto
+<?php
+ echo $_SESSION["utente"];
+?>
+</h1>
 
 <section>
   <div class="col-12">
@@ -16,5 +22,105 @@
     <div>   
   </div>
 </section>
+  <div>
+    <h2>Visualizza Conferenze Disponibili:</h2>
+          <?php 
+                  
+                  $result = mysqli_query($db, "SELECT * FROM VISUALIZZA_CONFERENZE");
+                  if(mysqli_num_rows($result) > 0) {
+
+                    echo "<table class='table table-dark table-striped'>";
+                    echo "<thead> <tr>";
+            
+                    $field = $result->fetch_fields();
+                    $fields = array();
+                    $j = 0;
+                    foreach ($field as $col) {
+                        echo "<th>" . $col->name . "</th>";
+                        array_push($fields, array(++$j, $col->name));
+                    }
+
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+            
+                    while ($row = $result->fetch_array()) {
+                        echo "<tr>";
+
+                        for ($i = 0; $i < sizeof($fields); $i++) {
+                            $fieldname = $fields[$i][1];
+                            $filedvalue = $row[$fieldname];
+                            echo "<td>" . $filedvalue . "</td>";
+                        }
+            
+                        $value = $row[0];
+                        #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+         ?>
+          
+              <td><button  type="submit"><a href="./Actions/paginaRegistraConferenza.php"> Registrati</a> </button></form> </td>
+              
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
+            }
+        
+        ?>
+
+          <h2>Visualizza le  conferenze a cui parteciperai:</h2>
+
+           <?php  
+                  
+                  $result = mysqli_query($db, "SELECT * FROM registra");
+                  if(mysqli_num_rows($result) > 0) {
+
+                    echo "<table class='table table-dark table-striped'>";
+                    echo "<thead> <tr>";
+            
+                    $field = $result->fetch_fields();
+                    $fields = array();
+                    $j = 0;
+                    foreach ($field as $col) {
+                        echo "<th>" . $col->name . "</th>";
+                        array_push($fields, array(++$j, $col->name));
+                    }
+
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+            
+                    while ($row = $result->fetch_array()) {
+                        echo "<tr>";
+
+                        for ($i = 0; $i < sizeof($fields); $i++) {
+                            $fieldname = $fields[$i][1];
+                            $filedvalue = $row[$fieldname];
+                            echo "<td>" . $filedvalue . "</td>";
+                        }
+            
+                        $value = $row[0];
+                        #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+         ?>
+          
+              
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
+            }
+        
+        ?>
+
+
+
+
+
+  </div>
 
  <?php include('./Components/footer.php'); ?> 
