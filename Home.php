@@ -217,7 +217,17 @@
 
 ?>
 
+<div>
+    <?php
+        if ($_SESSION["utente"]== "Speaker" ){
+                echo '<button><a href="./Actions/paginaSpeaker.php">Sezione Speaker</a></button>';
+        }
+        else if ($_SESSION["utente"]== "Presenter" ){
+                 echo '<button><a href="./Actions/paginaPresenter.php">Sezione Presenter</a></button>';
+        }
 
+    ?>
+</div>
 
 
 

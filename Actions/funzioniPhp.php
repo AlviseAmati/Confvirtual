@@ -48,6 +48,22 @@ function ControlloModificaMessaggio($sql_link, $query, $fraseSi, $fraseNo) { #re
     }
 }
 
+function ControlloModificaSpeaker($sql_link, $query, $fraseSi, $fraseNo) { #redirect
+    mysqli_query($sql_link, $query);
+
+    if (mysqli_affected_rows($sql_link) > 0) {
+        echo "<script>
+        alert('$fraseSi');
+        location.href= '/Progetto_Basi/confvirtual/Actions/paginaSpeaker.php';
+        </script>";
+    } else {
+        echo "<script>
+        alert('$fraseNo');
+        location.href= '/Progetto_Basi/confvirtual/Actions/paginaSpeaker.php';
+        </script>";
+    }
+}
+
 
 
 
