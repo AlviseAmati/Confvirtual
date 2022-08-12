@@ -114,7 +114,7 @@ function ControlloModificaRisorsa($sql_link, $query, $fraseSi, $fraseNo) { #redi
 
 
 
-
+/*
 
 
 
@@ -258,3 +258,4 @@ function StampaFormModificaProfilo($sql_link, $query, $action) {
             </form> <br>";       
     } 
 }
+*/

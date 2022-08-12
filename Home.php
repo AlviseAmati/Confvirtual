@@ -10,6 +10,47 @@
 ?>
 </h1>
 
+
+<div>
+    <h4> Il numero totale di conferenze è:
+        <?php
+        $result = mysqli_query($db, "SELECT COUNT(IdConferenza) FROM conferenza");
+        $row = $result->fetch_array();
+        echo $row[0];
+        ?>
+    </h4>
+</div>
+
+<div>
+    <h4> Il numero totale di conferenze Attive è:
+        <?php
+        $result = mysqli_query($db, "SELECT COUNT(IdConferenza) FROM conferenza WHERE CampoSvolgimento = 'Attiva'");
+        $row = $result->fetch_array();
+        echo $row[0];
+        ?>
+    </h4>
+</div>
+
+<div>
+    <h4> Il numero totale di Utenti registrati è:
+        <?php
+        $result = mysqli_query($db, "SELECT COUNT(Username) FROM utente");
+        $row = $result->fetch_array();
+        echo $row[0];
+        ?>
+    </h4>
+</div>
+
+<div>
+    <h4> La classifica deli speaker/presenter è:
+        <?php
+       # $result = mysqli_query($db, "SELECT COUNT(Username) FROM utente");
+       # $row = $result->fetch_array();
+      #  echo $row[0];
+        ?>
+    </h4>
+</div>
+
 <section>
   <div class="col-12">
     <img src="./img/palanero.jpg" width="100%" height="900" />
