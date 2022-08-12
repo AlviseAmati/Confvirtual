@@ -32,7 +32,7 @@
         } 
         else if($_SESSION["tipo"] == 'Utente'){
           echo '<li class="nav-item">
-              <a class="nav-link" href="/Progetto_Basi/confvirtual/Utente.php"> Il mio profilo </a>
+              <a class="nav-link" href="/Progetto_Basi/confvirtual/Home.php"> Il mio profilo </a>
                </li> 
                <li class="nav-item">
                <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
@@ -40,7 +40,7 @@
         }
         else if($_SESSION["tipo"]  == 'Speaker'){
           echo '<li class="nav-item">
-              <a class="nav-link" href="/Progetto_Basi/confvirtual/Speaker.php"> Il mio profilo </a>
+              <a class="nav-link" href="/Progetto_Basi/confvirtual/Home.php"> Il mio profilo </a>
                </li> 
                <li class="nav-item">
                <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
@@ -48,7 +48,7 @@
         }
         else if($_SESSION["tipo"]  == 'Presenter'){
           echo '<li class="nav-item">
-              <a class="nav-link" href="/Progetto_Basi/confvirtual/Presenter.php"> Il mio profilo </a>
+              <a class="nav-link" href="/Progetto_Basi/confvirtual/Home.php"> Il mio profilo </a>
                </li> 
                <li class="nav-item">
                <a class="nav-link" href="/Progetto_Basi/confvirtual/Actions/Authentication/LogOut.php"> Esci </a>
