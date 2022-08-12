@@ -7,11 +7,11 @@
   $LinkWeb = $_POST['LinkWeb'];
   $Descrizione = $_POST['Descrizione'];
   $IdPresentazione = $_SESSION['IdPresentazione'];
+  $IdRisorsa = $_POST['IdRisorsa'];
   
 
-  echo $IdRisorsa;
-  $sp = 'INSERT INTO risorsaaggiuntiva  (LinkWeb,Descrizione,IdPresentazione,Username) VALUES ("'.$LinkWeb.'","'.$Descrizione.'","'.$IdPresentazione.'","'.$Username.'")';
-  #$sp = 'UPDATE risorsaaggiuntiva SET LinkWeb = "'.$LinkWeb.'", Descrizione = "'.$Descrizione.'", IdPresentazione = "'.$IdPresentazione.'"  WHERE Username= "'.$Username.'"';
+  #echo $IdRisorsa;
+  $sp = 'UPDATE risorsaaggiuntiva SET LinkWeb = "'.$LinkWeb.'", Descrizione = "'.$Descrizione.'", IdPresentazione = "'.$IdPresentazione.'"  WHERE IdRisorsa= "'.$IdRisorsa.'"';
   $fSi = "Inserimento Universita con Successo!";
   $fNo = "Errore nell'invio della richiesta";
  

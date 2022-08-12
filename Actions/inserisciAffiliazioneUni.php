@@ -11,5 +11,10 @@
   $fNo = "Errore nell'invio della richiesta";
  
   #echo $sp;
-  ControlloModificaSpeaker($db, $sp, $fSi, $fNo);   
+  if ($_SESSION['utente']== "Speaker"){
+    ControlloModificaSpeaker($db, $sp, $fSi, $fNo);  
+    }
+    else {
+      ControlloModificaPresenter($db, $sp, $fSi, $fNo);
+    } 
 ?> 
