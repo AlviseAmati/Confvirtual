@@ -143,7 +143,7 @@
          ?>
 
               
-              <td><form action="Actions/eliminaSessione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+              
               <td><form action="Actions/paginaInserisciPresentazione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Inserisci Presentazione </button></form> </td>
               
         <?php
