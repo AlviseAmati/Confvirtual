@@ -17,7 +17,7 @@
   $Tipo = $_POST['Tipo'];
     if($Tipo == 'Tutorial'){
         echo '<h3>Associa Speaker a presentazione Tutorial:</h3>
-             <form method="POST" action="Actions/associaSpeaker.php">
+             <form method="POST" action="./associaSpeaker.php">
           <label for="Username">Username:</label><br>
           <input type="text" id="Username" name="Username" value=""><br>
           <input type="hidden" id="IdPresentazione" name="IdPresentazione" value="'.$IdPresentazione.'"><br><br>
@@ -26,7 +26,7 @@
     }
     else{
         echo '<h3>Associa Presenter ad un Articolo:</h3>
-             <form method="POST" action="Actions/associaPresenter.php">
+             <form method="POST" action="./associaPresenter.php">
           <label for="Username">Username:</label><br>
           <input type="text" id="Username" name="Username" value=""><br>
           <input type="hidden" id="IdPresentazione" name="IdPresentazione" value="'.$IdPresentazione.'"><br><br>

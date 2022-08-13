@@ -30,14 +30,10 @@
             <input type="text" id="Pdf" name="Pdf" value="pdf1"><br>
             <label for="NumeroPagine">Numero Pagine:</label><br>
             <input type="text" id="NumeroPagine" name="NumeroPagine" value="23"><br>
-            <label for="StatoSvolgimento">Stato Svolgimento:</label><br>
-            <input type="text" id="StatoSvolgimento" name="StatoSvolgimento" value="Coperto / Non Coperto"><br>
             <label for="Abstract">Abstract:</label><br>
             <input type="text" id="Abstract" name="Abstract" value="..."><br>
             <label for="Tipo">Tipo:</label><br>
-            <input type="text" id="Tipo" name="Tipo" value="Articolo / Tutorial"><br>
-            <label for="Username">Username:</label><br>
-            <input type="text" id="Username" name="Username" value="Alvi"><br><br>
+            <input type="text" id="Tipo" name="Tipo" value="Articolo / Tutorial"><br><br>
             <input type="submit" value="Submit">
           </form>
 
