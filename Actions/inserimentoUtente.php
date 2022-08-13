@@ -12,8 +12,9 @@ $LuogoNascita = $_POST['LuogoNascita'];
 
 $sp = "call REGISTRA_UTENTE ('$Username', '$Nome', '$Cognome', '$Password', '$DataNascita', '$LuogoNascita')"; 
 $fSi = "Registrazione effettuata con Successo!";
-$fNo = "Errore nell'invio della richiesta";
+$fNo = "Errore nell invio della richiesta";
 #echo $sp;
+
 ControlloModifica($db, $sp, $fSi, $fNo);
 
 ?>
