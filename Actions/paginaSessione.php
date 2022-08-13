@@ -5,7 +5,8 @@
 
 <title>Homepage</title>
 
-<td><button  type="submit"><a href="../Home.php"> Vai alla Home</a> </button></form> </td>
+<br>
+<td><button class="btn btn-outline-secondary" type="submit"><a href="../Home.php" style="color:grey;"> Vai alla Home</a> </button></form> </td>
 
 <h1 style="text-align: center;"> Visualizza le sessioni
 <?php

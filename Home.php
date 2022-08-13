@@ -45,6 +45,7 @@
         </div>
 </div>
         <div class="statisticheMedia">
+            <br>
             <h4> La classifica degli speaker/presenter è: <br>
                 <?php
                 $result = mysqli_query($db, "SELECT presentazione.Username, AVG(voto) AS media FROM presentazione INNER JOIN valuta ON valuta.IdPresentazione = presentazione.IdPresentazione GROUP BY presentazione.Username ORDER BY media DESC");
@@ -324,10 +325,10 @@
  <div>
     <?php
         if ($_SESSION["utente"]== "Speaker" ){
-                echo '<button><a href="./Actions/paginaSpeaker.php">Sezione Speaker</a></button>';
+                echo '<div style="text-align:center;"> <button  class="btn btn-secondary btn-lg"><a href="./Actions/paginaSpeaker.php" style="color:white;">Sezione Speaker</a></button> </div> <br><br>';
         }
         else if ($_SESSION["utente"]== "Presenter" ){
-                 echo '<button><a href="./Actions/paginaPresenter.php">Sezione Presenter</a></button>';
+                 echo '<div style="text-align:center;"> <button class="btn btn-secondary btn-lg"><a href="./Actions/paginaPresenter.php" style="color:white;">Sezione Presenter</a></button> </div> <br><br>';
         }
 
     ?>

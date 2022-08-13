@@ -9,8 +9,8 @@ $_SESSION['IdPresentazione'] = $_POST['IdPresentazione'];
 
 
 <title>Pagina Speaker</title>
-
-<td><button  type="submit"><a href="./paginaSpeaker.php"> Vai alla Home</a> </button></form> </td>
+<br>
+<td><button class="btn btn-outline-secondary" type="submit"><a href="./paginaSpeaker.php" style="color:grey;"> Torna a pag. Speaker</a> </button></form> </td>
 
 <section>
   <div class="col-12">
