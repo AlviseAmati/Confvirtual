@@ -10,7 +10,22 @@
 
 <section>
   <div class="col-12">
-    <h1>Operazioni Admin:</h1>
+
+  <h1>Operazioni Admin:</h1>
+
+
+  <p style="text-align: center;">
+  <a class="btn btn-primary" data-toggle="collapse" href="#conferenza" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Crea Conferenza</a>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sessione" aria-expanded="false" aria-controls="multiCollapseExample2">Crea Sessione</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Presetnazioni</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#valutazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Valutazioni</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sponsor" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Sponsor</button>
+
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+ </p>
+
+
+<div class="collapse multi-collapse" id="conferenza">
     <h3>Crea Conferenza:</h3>
     <form method="POST" action="Actions/creaConferenza.php">
      <label for="Anno">Anno Edizione:</label><br>
@@ -74,6 +89,9 @@
               }
           
           ?>
+</div> 
+
+<div class="collapse multi-collapse" id="sessione">
           <h3>Crea Sessione:</h3>
           <form method="POST" action="Actions/creaSessione.php">
             <label for="NumeroPresentazioni">Numero Presentazioni:</label><br>
@@ -125,6 +143,7 @@
 
               
               <td><form action="Actions/eliminaSessione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+              <td><form action="Actions/paginaInserisciPresentazione.php" method="POST"><input type="hidden" name="IdSessione" value="<?php  echo $value; ?>"></input><button type="submit"> Inserisci Presentazione </button></form> </td>
               
         <?php
                     echo "</tr>";
@@ -136,33 +155,10 @@
             }
         
         ?>
+</div>
 
-          <h3>Inserimento presentazione in una Sessione:</h3>
-          <form method="POST" action="Actions/inserisciPresentazione.php">
-            <label for="NumSequenze">Numero Sequenze:</label><br>
-            <input type="text" id="NumSequenze" name="NumSequenze" value="5"><br>
-            <label for="OrarioFine">Orario Fine:</label><br>
-            <input type="text" id="OrarioFine" name="OrarioFine" value="10:00:00"><br>
-            <label for="OrarioInizio">Orario Inizio:</label><br>
-            <input type="text" id="OrarioInizio" name="OrarioInizio" value="08:00:00"><br>
-            <label for="Titolo">Titolo:</label><br>
-            <input type="text" id="Titolo" name="Titolo" value="Art/Tout 1"><br>
-            <label for="Pdf">Pdf:</label><br>
-            <input type="text" id="Pdf" name="Pdf" value="pdf1"><br>
-            <label for="NumeroPagine">Numero Pagine:</label><br>
-            <input type="text" id="NumeroPagine" name="NumeroPagine" value="23"><br>
-            <label for="StatoSvolgimento">Stato Svolgimento:</label><br>
-            <input type="text" id="StatoSvolgimento" name="StatoSvolgimento" value="Coperto / Non Coperto"><br>
-            <label for="Abstract">Abstract:</label><br>
-            <input type="text" id="Abstract" name="Abstract" value="......"><br>
-            <label for="IdSessione">Id Sessione:</label><br>
-            <input type="text" id="IdSessione" name="IdSessione" value="1"><br>
-            <label for="Tipo">Tipo:</label><br>
-            <input type="text" id="Tipo" name="Tipo" value="Articolo / Tutorial"><br>
-            <label for="Username">Username:</label><br>
-            <input type="text" id="Username" name="Username" value="Alvi"><br><br>
-            <input type="submit" value="Submit">
-          </form>
+         
+<div class="collapse multi-collapse" id="presentazione">       
           <h3>Visualizza Presentazioni:</h3>
           <?php 
           
@@ -210,6 +206,8 @@
             }
         
         ?>
+</div>
+        
         <h3>Associa Speaker a presentazione Tutorial:</h3>
           <form method="POST" action="Actions/associaSpeaker.php">
             <label for="Username">Username:</label><br>
@@ -229,6 +227,8 @@
           </form>
           <h4>Visualizzare tabella presentazioni sopra</h4> <br><br>
 
+
+<div class="collapse multi-collapse" id="valutazione">
           <h4>Inserimento valutazioni presentazioni:</h4>
           <form method="POST" action="Actions/inserimentoValutazioni.php">
             <label for="Username">Username:</label><br>
@@ -290,6 +290,8 @@
             }
         
         ?>
+</div>
+<div class="collapse multi-collapse" id="sponsor">
         <h4>Inserimento Sponsor:</h4>
           <form method="POST" action="Actions/inserimentoSponsor.php">
             <label for="Nome">Nome:</label><br>
@@ -345,6 +347,7 @@
             }
         
         ?>
+</div
 
 
 

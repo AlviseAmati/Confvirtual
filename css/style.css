@@ -10,3 +10,13 @@ pre{
     color: white !important;
     
 }
+
+#statischeHome{
+    display: flex !important;
+
+}
+
+.statistiche{
+    width: 20% !important;
+    
+}

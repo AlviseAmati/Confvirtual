@@ -2,6 +2,7 @@
 <?php
   include 'connessioneDB.php';
   include 'funzioniPhp.php';
+  session_start();
 
   #i nomi dentro la variabile POST devono essere uguale al name nel form di la
   $NumSequenze = $_POST['NumSequenze'];
@@ -12,7 +13,7 @@
   $NumeroPagine = $_POST['NumeroPagine'];
   $StatoSvolgimento = $_POST['StatoSvolgimento'];
   $Abstract = $_POST['Abstract'];
-  $IdSessione = $_POST['IdSessione'];
+  $IdSessione = $_SESSION['IdSessione'];
   $Tipo = $_POST['Tipo'];
   $Username = $_POST['Username'];
 

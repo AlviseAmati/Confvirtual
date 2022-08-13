@@ -10,84 +10,85 @@
 ?>
 </h1>
 
+<div id="statischeHome">
+        <div class="statistiche">
+            <h4> Il numero totale di conferenze è:
+                <?php
+                $result = mysqli_query($db, "SELECT COUNT(IdConferenza) FROM conferenza");
+                $row = $result->fetch_array();
+                echo $row[0];
+                ?>
+            </h4>
+        </div>
 
-<div>
-    <h4> Il numero totale di conferenze è:
-        <?php
-        $result = mysqli_query($db, "SELECT COUNT(IdConferenza) FROM conferenza");
-        $row = $result->fetch_array();
-        echo $row[0];
+        <div class="statistiche">
+            <h4> Il numero totale di conferenze Attive è:
+                <?php
+                $result = mysqli_query($db, "SELECT COUNT(IdConferenza) FROM conferenza WHERE CampoSvolgimento = 'Attiva'");
+                $row = $result->fetch_array();
+                echo $row[0];
+                ?>
+            </h4>
+        </div>
+
+        <div  class="statistiche">
+            <h4> Il numero totale di Utenti registrati è:
+                <?php
+                $result = mysqli_query($db, "SELECT COUNT(Username) FROM utente");
+                $row = $result->fetch_array();
+                echo $row[0];
+                ?>
+            </h4>
+        </div>
+
+        <div class="statistiche">
+            <h4> La classifica deli speaker/presenter è: 
+                <?php
+                $result = mysqli_query($db, "SELECT presentazione.Username, AVG(voto) AS media FROM presentazione INNER JOIN valuta ON valuta.IdPresentazione = presentazione.IdPresentazione GROUP BY presentazione.Username ORDER BY media DESC");
+                if(mysqli_num_rows($result) > 0) {
+
+                    echo "<table class='table table-dark table-striped'>";
+                    echo "<thead> <tr>";
+            
+                    $field = $result->fetch_fields();
+                    $fields = array();
+                    $j = 0;
+                    foreach ($field as $col) {
+                        echo "<th>" . $col->name . "</th>";
+                        array_push($fields, array(++$j, $col->name));
+                    }
+
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+            
+                    while ($row = $result->fetch_array()) {
+                        echo "<tr>";
+
+                        for ($i = 0; $i < sizeof($fields); $i++) {
+                            $fieldname = $fields[$i][1];
+                            $filedvalue = $row[$fieldname];
+                            echo "<td>" . $filedvalue . "</td>";
+                        }
+            
+                        $value = $row[0];
+                        #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
         ?>
-    </h4>
-</div>
-
-<div>
-    <h4> Il numero totale di conferenze Attive è:
+        
+            
+            
         <?php
-        $result = mysqli_query($db, "SELECT COUNT(IdConferenza) FROM conferenza WHERE CampoSvolgimento = 'Attiva'");
-        $row = $result->fetch_array();
-        echo $row[0];
-        ?>
-    </h4>
-</div>
-
-<div>
-    <h4> Il numero totale di Utenti registrati è:
-        <?php
-        $result = mysqli_query($db, "SELECT COUNT(Username) FROM utente");
-        $row = $result->fetch_array();
-        echo $row[0];
-        ?>
-    </h4>
-</div>
-
-<div>
-    <h4> La classifica deli speaker/presenter è:
-        <?php
-        $result = mysqli_query($db, "SELECT presentazione.Username, AVG(voto) AS media FROM presentazione INNER JOIN valuta ON valuta.IdPresentazione = presentazione.IdPresentazione GROUP BY presentazione.Username ORDER BY media DESC");
-        if(mysqli_num_rows($result) > 0) {
-
-            echo "<table class='table table-dark table-striped'>";
-            echo "<thead> <tr>";
-    
-            $field = $result->fetch_fields();
-            $fields = array();
-            $j = 0;
-            foreach ($field as $col) {
-                echo "<th>" . $col->name . "</th>";
-                array_push($fields, array(++$j, $col->name));
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
             }
 
-            echo "</tr>";
-            echo "</thead>";
-            echo "<tbody>";
-    
-            while ($row = $result->fetch_array()) {
-                echo "<tr>";
-
-                for ($i = 0; $i < sizeof($fields); $i++) {
-                    $fieldname = $fields[$i][1];
-                    $filedvalue = $row[$fieldname];
-                    echo "<td>" . $filedvalue . "</td>";
-                }
-    
-                $value = $row[0];
-                #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
- ?>
-  
-     
-      
-<?php
-            echo "</tr>";
-        }
-        echo "</tbody>";
-        echo "</table>";
-    } else {
-        echo '<center> <h4> Non ci sono risultati </h4> </center>';
-    }
-
-?>
-    </h4>
+        ?>
+            </h4>
+        </div>
 </div>
 
 <section>
