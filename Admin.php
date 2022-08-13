@@ -11,17 +11,17 @@
 <section>
   <div class="col-12">
 
-  <h1>Operazioni Admin:</h1>
+  <h1>Dashboard Admin:</h1>
 
 
   <p style="text-align: center;">
   <a class="btn btn-primary" data-toggle="collapse" href="#conferenza" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Crea Conferenza</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sessione" aria-expanded="false" aria-controls="multiCollapseExample2">Crea Sessione</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Presetnazioni</button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presetnazioni/Associa Utente</button>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#valutazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Valutazioni</button>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sponsor" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Sponsor</button>
 
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+  
  </p>
 
 
@@ -195,6 +195,7 @@
 
               
               <td><form action="Actions/eliminaPresentazione.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+              <td><form action="Actions/paginaAssociazioneUtente.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $row[0]; ?>"></input><input type="hidden" name="Tipo" value="<?php  echo $row[10]; ?>"></input><button type="submit"> Associa </button></form> </td>
               
         <?php
                     echo "</tr>";
@@ -207,25 +208,7 @@
         
         ?>
 </div>
-        
-        <h3>Associa Speaker a presentazione Tutorial:</h3>
-          <form method="POST" action="Actions/associaSpeaker.php">
-            <label for="Username">Username:</label><br>
-            <input type="text" id="Username" name="Username" value=""><br>
-            <label for="IdPresentazione">IdPresentazione:</label><br>
-            <input type="text" id="IdPresentazione" name="IdPresentazione" value=""><br><br>
-            <input type="submit" value="Submit">
-          </form>
-         
-        <h3>Associa Presenter ad un Articolo:</h3>
-          <form method="POST" action="Actions/associaPresenter.php">
-            <label for="Username">Username:</label><br>
-            <input type="text" id="Username" name="Username" value=""><br>
-            <label for="IdPresentazione">IdPresentazione:</label><br>
-            <input type="text" id="IdPresentazione" name="IdPresentazione" value=""><br><br>
-            <input type="submit" value="Submit">
-          </form>
-          <h4>Visualizzare tabella presentazioni sopra</h4> <br><br>
+          
 
 
 <div class="collapse multi-collapse" id="valutazione">
