@@ -6,8 +6,8 @@
 
 
 
-
-<td><button  type="submit"><a href="./paginaRisorsa.php"> torna indietro</a> </button></form> </td>
+<br>
+<td><button class="btn btn-outline-secondary" type="submit"><a href="./paginaRisorsa.php" style="color:grey;"> torna indietro</a> </button></form> </td>
 
 <section>
   <div class="col-12">
