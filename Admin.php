@@ -5,8 +5,8 @@
 
 <title>Homepage</title>
 
-
-<td><button  type="submit"><a href="./Home.php"> Vai alla Home</a> </button></form> </td>
+<br>
+<td><button  class="btn btn-outline-secondary" type="submit"><a href="./Home.php" style="color:grey;"> Vai alla Home</a> </button></form> </td>
 
 <section>
   <div class="col-12">
@@ -15,11 +15,11 @@
 
 
   <p style="text-align: center;">
-  <a class="btn btn-primary" data-toggle="collapse" href="#conferenza" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Crea Conferenza</a>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sessione" aria-expanded="false" aria-controls="multiCollapseExample2">Crea Sessione</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presetnazioni/Associa Utente</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#valutazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Valutazioni</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#sponsor" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Sponsor</button>
+  <a class="btn btn-secondary" data-toggle="collapse" href="#conferenza" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Crea Conferenza</a>
+  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#sessione" aria-expanded="false" aria-controls="multiCollapseExample2">Crea Sessione</button>
+  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presetnazioni/Associa Utente</button>
+  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#valutazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Valutazioni</button>
+  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#sponsor" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Sponsor</button>
 
   
  </p>
@@ -90,6 +90,7 @@
           
           ?>
 </div> 
+<br><br>
 
 <div class="collapse multi-collapse" id="sessione">
           <h3>Crea Sessione:</h3>
@@ -156,7 +157,7 @@
         
         ?>
 </div>
-
+<br><br>
          
 <div class="collapse multi-collapse" id="presentazione">       
           <h3>Visualizza Presentazioni:</h3>
@@ -208,7 +209,7 @@
         
         ?>
 </div>
-          
+<br><br>          
 
 
 <div class="collapse multi-collapse" id="valutazione">
@@ -274,6 +275,8 @@
         
         ?>
 </div>
+<br><br>
+
 <div class="collapse multi-collapse" id="sponsor">
         <h4>Inserimento Sponsor:</h4>
           <form method="POST" action="Actions/inserimentoSponsor.php">
@@ -330,8 +333,8 @@
             }
         
         ?>
-</div
-
+</div>
+ <br><br>
 
 
 

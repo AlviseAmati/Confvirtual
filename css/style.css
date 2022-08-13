@@ -13,10 +13,18 @@ pre{
 
 #statischeHome{
     display: flex !important;
-
+    margin-left: 20% !important;
+   
 }
 
 .statistiche{
-    width: 20% !important;
+    width: 25% !important;
+    text-align: center;
+}
+.statisticheMedia{
+    
+    
+    margin-left: 30% !important;
+    margin-right: 30% !important;
     
 }
