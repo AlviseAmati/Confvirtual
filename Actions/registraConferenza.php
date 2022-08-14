@@ -10,7 +10,7 @@
 
   $sp = "call REGISTRA_CONFERENZA ('$IdConferenza', '$Username')";
   $fSi = "Registrazione conferenza Conferenza con Successo!";
-  $fNo = "Errore nell invio della richiesta";
+  $fNo = "Errore nell invio della richiesta, sei gia registrato a questa conferenza";
   #echo $sp;
   ControlloModificaHome($db, $sp, $fSi, $fNo);   
 ?> 
