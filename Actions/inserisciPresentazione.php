@@ -16,9 +16,12 @@
   $Tipo = $_POST['Tipo'];
   
 
+
   $sp = "call INSERISCI_PRESENTAZIONE ('$NumSequenze', '$OrarioFine', '$OrarioInizio', '$Titolo' , '$Pdf', '$NumeroPagine','$Abstract', '$IdSessione', '$Tipo')";
   $fSi = "Inserimento nuova presentazione con Successo!";
-  $fNo = "Errore nell'invio della richiesta";
+  $fNo = "Errore nell invio della richiesta";
  
+  #echo $sp;
   ControlloModifica($db, $sp, $fSi, $fNo);   
+
 ?> 
