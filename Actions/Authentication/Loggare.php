@@ -23,13 +23,11 @@
       $_SESSION["tipo"] = $row[6];
         if($row[6] == 'Amministratore'){
             echo '<script type="text/javascript">
-            alert("Autententicazione completata con successo");
             location.href = "/Progetto_Basi/confvirtual/Home.php";
           </script>';
         } 
         else if($row[6] == 'Utente'||$row[6] == 'Speaker'||$row[6] == 'Presenter'){
             echo '<script type="text/javascript">
-            alert("Autententicazione completata con successo");
             location.href = "/Progetto_Basi/confvirtual/Home.php";
           </script>';
         }
