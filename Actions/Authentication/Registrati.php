@@ -1,28 +1,26 @@
-<?php require('../../components/head.php'); ?>
-<?php require('../../components/navbar.php'); ?>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="\Progetto_Basi\confvirtual\css\logIn.css">
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-<section>
-<br> <br>
-  <div class="container">
-    <div class="row align-items-center justify-content-center">
-      <h2> Registrazione </h2>
-      <form method="post" action="../inserimentoUtente.php" class="form-control"> <br>
-      <b> Username : </b> <br>
-      <input type="text" name="Username"> <br> <br>
-      <b> Nome: </b> <br>
-      <input type="text" name="Nome"> <br> <br>
-      <b> Cognome : </b> <br>
-      <input type="text" name="Cognome"> <br> <br>
-      <b> Password: </b> <br>
-      <input type="password" name="Password"> <br> <br>
-      <b> Data di nascita : </b> <br>
-      <input value="aaaa-mm-dd" type="text" name="DataNascita"> <br> <br>
-      <b> Luogo di nascita: </b> <br>
-      <input type="text" name="LuogoNascita"> <br> <br>
-      <input type="submit"  value="Registrati" class='btn btn-danger btn-lg'>
-      </form>
-    </div>
+   
+
+    <!-- Login Form -->
+    <form  method="post" action="../inserimentoUtente.php">
+      <input type="text" id="login" class="fadeIn second" name="Username" placeholder="Username">
+      <input type="text" id="password" class="fadeIn third" name="Nome" placeholder="Nome">
+      <input type="text" id="password" class="fadeIn third" name="Cognome" placeholder="Cognome">
+      <input type="text" id="password" class="fadeIn third" name="Password" placeholder="Password">
+      <input type="text" id="password" class="fadeIn third" name="DataNascita" placeholder="Data Nascita (y/m/d)">
+      <input type="text" id="password" class="fadeIn third" name="LuogoNascita" placeholder="Luogo Nascita">
+      <input type="submit" class="fadeIn fourth" value="Register">
+    </form>
+
+   
+
   </div>
-</section>
-
-<!--<?php require('../../components/footer.php'); ?>-->
+</div>

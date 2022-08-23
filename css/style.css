@@ -10,3 +10,21 @@ pre{
     color: white !important;
     
 }
+
+#statischeHome{
+    display: flex !important;
+    margin-left: 20% !important;
+   
+}
+
+.statistiche{
+    width: 25% !important;
+    text-align: center;
+}
+.statisticheMedia{
+    
+    
+    margin-left: 30% !important;
+    margin-right: 30% !important;
+    
+}

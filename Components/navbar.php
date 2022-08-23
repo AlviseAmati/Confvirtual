@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white col-lg-12">
+<nav class="navbar navbar-expand-lg navbar-light col-lg-12" style="background-color: #E0E0E0;">
   <div class="container">
     <a class="navbar-brand" href="/Progetto_Basi/confvirtual/Home.php">
       <h2> <b> CONFVIRTUAL </b> </h2> 

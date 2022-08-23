@@ -1,19 +1,22 @@
-<section>
-<br> <br>
-  <div class="container">
-    <div class="row align-items-center justify-content-center">
-      <h2>Login </h2>
-      <form name="loginForm" method="post" action="Loggare.php" class="form-control">
-        <div class="mb-3 col-5">
-          <label for="mailForm" class="form-label"> Username </label>
-          <input type="text" class="form-control" name="username" id="mailForm" placeholder="mail@dominio.com" />
-        </div>
-        <div class="mb-3 col-5">
-          <label for="passForm" class="form-label"> Password </label>
-          <input type="password" class="form-control" name="password" id="passForm" placeholder="********" />
-        </div>
-        <input type="submit" class="btn btn-success btn-lg" name=" Accedi" value="Accedi">
-      </form>
-    </div>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="\Progetto_Basi\confvirtual\css\logIn.css">
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+   
+
+    <!-- Login Form -->
+    <form name="loginForm" method="post" action="Loggare.php">
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+   
+
   </div>
-</section>  
+</div>
