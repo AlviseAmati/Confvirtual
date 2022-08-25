@@ -1,4 +1,5 @@
 </body>
+<link rel="stylesheet" href="\Progetto_Basi\confvirtual\css\style.css">
 <footer class="footer bg-dark">
       <div class="container" style="width: 70%">
         <p class="col-lg-12"> 

@@ -4,6 +4,7 @@ div.container {
 
 footer{
     color: white !important;
+    margin-top: calc(100vh - 1160px) !important;
 }
 
 pre{
