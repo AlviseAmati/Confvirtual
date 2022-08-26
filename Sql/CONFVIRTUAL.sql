@@ -39,7 +39,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS confvirtual.ProgrammaGiornaliero(
 	IdProgrammaGiornaliero int auto_increment PRIMARY KEY,
-    Giorno datetime NOT NULL,
+    Giorno date NOT NULL,
     IdConferenza INT NOT NULL,
     FOREIGN KEY (IdConferenza) REFERENCES Conferenza(IdConferenza)
 )
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS confvirtual.Presentazione(
     Titolo varchar(45),
     Pdf varchar(45),
     NumeroPagine int,
-    StatoSvolgimento ENUM ('Coperto','Non Coperto'),
+    StatoSvolgimento ENUM ('Coperto','Non Coperto') DEFAULT 'Non Coperto',
     Abstract varchar(500),
     IdSessione INT,
     Tipo ENUM ('Articolo','Tutorial'),
@@ -195,6 +195,8 @@ CREATE TABLE IF NOT EXISTS confvirtual.Registra(
    FOREIGN KEY (IdConferenza) REFERENCES Conferenza(IdConferenza)
 )
 ENGINE = InnoDB;
+
+
 
 # -- INPUT DATA --
 
@@ -369,6 +371,91 @@ BEGIN
 END $
 DELIMITER ; 
 
+DELIMITER $
+CREATE  PROCEDURE `INSERISCI_AffiliazioneUni`(IN `NomeUniversitanew` varchar(45), IN `NomeDipartimetnonew` varchar(45))
+BEGIN 
+	START TRANSACTION;
+    INSERT INTO AffiliazioneUniversita (NomeUniversita,NomeDipartimento) VALUES(NomeUniversitanew,NomeDipartimentonew);
+    COMMIT;
+END $
+DELIMITER ;
+
+#solo SPEAKER
+DELIMITER $
+CREATE  PROCEDURE `MODIFICA_AffiliazioneUni`(IN `IdUniversitanew` INT, IN `NomeUniversitanew` varchar(45), IN `NomeDipartimetnonew` varchar(45))
+BEGIN 
+	START TRANSACTION;
+    update AffiliazioneUniversita
+    set  NomeUniversita=NomeUniversitanew, NomeDipartimento=NomeDipartimentonew
+    Where IdUniversita=IdUniversitanew;
+    COMMIT;
+END $
+DELIMITER ;
+
+#solo CV SPEAKER
+DELIMITER $
+CREATE  PROCEDURE `INSERISCI_CV_SPEAKER`(IN `Usernamenew` varchar(45), IN `CurriculumSpeakernew` varchar(30))
+BEGIN 
+	START TRANSACTION;
+    update Utente
+    set CurriculumSpeaker=CurriculumSpeakernew
+    WHERE Username=Usernamenew;
+    COMMIT;
+END $
+DELIMITER ;
+
+#solo CV PRESENTER
+DELIMITER $
+CREATE  PROCEDURE `INSERISCI_CV_SPEAKER`(IN `Usernamenew` varchar(45), IN `CurriculumPresenternew` varchar(30))
+BEGIN 
+	START TRANSACTION;
+    update Utente
+    set CurriculumPresenter=CurriculumPresenternew
+    WHERE Username=Usernamenew;
+    COMMIT;
+END $
+DELIMITER ;
+
+#inserisci foto PRESENTER
+DELIMITER $
+CREATE  PROCEDURE `INSERISCI_Foto_Presenter`(IN `Usernamenew` varchar(45), IN `FotoPresenternew` varchar(45))
+BEGIN 
+	START TRANSACTION;
+    update Utente
+    set FotoPresenter=FotoPresenternew
+    WHERE Username=Usernamenew;
+    COMMIT;
+END $
+DELIMITER ;
+
+#inserisci foto PRESENTER
+DELIMITER $
+CREATE  PROCEDURE `INSERISCI_Foto_Speaker`(IN `Usernamenew` varchar(45), IN `FotoSpeakernew` varchar(45))
+BEGIN 
+	START TRANSACTION;
+    update Utente
+    set FotoSpeaker=FotoSpeakernew
+    WHERE Username=Usernamenew;
+    COMMIT;
+END $
+DELIMITER ;
+
+DELIMITER $
+CREATE  PROCEDURE `INSERISCI_RisorsaAggiuntiva`(IN `Usernamenew` varchar(45), IN `Titolonew` varchar(45), IN `Abstractnew` varchar(500))
+BEGIN 
+	START TRANSACTION;
+    update Presentqazione
+    set Titolo=Titolonew, Abstract=Abstractnew
+    WHERE Username=Usernamenew;
+    COMMIT;
+END $
+DELIMITER ;
+
+
+
+
+
+
 
 #da qui in poi sono tutte operazioni degli ADMIN
 
@@ -394,10 +481,10 @@ DELIMITER ;
 
  #solo AMMINISTRATORE inserire presentazioni in una sessione, la ssessione la prende in base alla sessione in cui e loggato l amministratore    (gestire il fatto che in base a campo tipo hai dei campi da lasciare vuoti)
 DELIMITER $  
-CREATE PROCEDURE `INSERISCI_PRESENTAZIONE`(IN `NumSequenzeNew` varchar(45),IN `OrarioFineNew` time,  IN `OrarioInizioNew` time, IN `TitoloNew` varchar(45),IN `PdfNew` varchar(45),IN `NumeroPagineNew` int,IN `StatoSvolgimentoNew` ENUM ('Coperto','Non Coperto'),IN `AbstractNew` varchar (500),IN `IdSessioneNew` int,IN `TipoNew`ENUM ('Articolo','Tutorial'),IN `UsernameNew` varchar(45)) 
+CREATE PROCEDURE `INSERISCI_PRESENTAZIONE`(IN `NumSequenzeNew` varchar(45),IN `OrarioFineNew` time,IN `OrarioInizioNew` time, IN `TitoloNew` varchar(45),IN `PdfNew` varchar(45),IN `NumeroPagineNew` int,IN `AbstractNew` varchar (500),IN `IdSessioneNew` int,IN `TipoNew`ENUM ('Articolo','Tutorial')) 
 BEGIN 
 	START TRANSACTION;
-    INSERT INTO Presentazione (NumSequenze,OrarioFine,OrarioInizio,Titolo,Pdf,NumeroPagine,StatoSvolgimento,Abstract,IdSessione,Tipo,Username) VALUES(NumSequenzeNew,OrarioFineNew,OrarioInizioNew,TitoloNew,PdfNew,NumeroPagineNew,StatoSvolgimentoNew,AbstractNew,IdSessioneNew,TipoNew,UsernameNew);
+    INSERT INTO Presentazione (NumSequenze,OrarioFine,OrarioInizio,Titolo,Pdf,NumeroPagine,Abstract,IdSessione,Tipo) VALUES(NumSequenzeNew,OrarioFineNew,OrarioInizioNew,TitoloNew,PdfNew,NumeroPagineNew,AbstractNew,IdSessioneNew,TipoNew);
     COMMIT;
 END $
 DELIMITER ;
@@ -407,7 +494,9 @@ DELIMITER $
 CREATE PROCEDURE `ASSOCIA_SPEAKER`(IN `UsernameNew` varchar(45),IN `IdPresentazioneNew` INT) 
 BEGIN 
 	START TRANSACTION;
-    INSERT INTO SvolgeSpeaker (Username,IdPresentazione) VALUES(UsernameNew,IdPresentazioneNew);
+     update Presentazione 
+    SET Username=UsernameNew  
+    WHERE IdPresentazione=IdPresentazioneNew;
     COMMIT;
 END $
 DELIMITER ;
@@ -453,4 +542,44 @@ BEGIN
     INSERT INTO Sponsor (Nome,ImmagineLogo) VALUES(NomeNew,ImmagineLogoNew);
     COMMIT;
 END $
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+# TRIGGER stato svolgimento
+# FINITO FUNZIONA
+DELIMITER $ 
+CREATE TRIGGER stato_svolgimento BEFORE UPDATE ON Presentazione
+FOR EACH ROW 
+SET NEW.StatoSvolgimento = IF( NEW.Username IS NOT NULL, "Coperto", "Non Coperto");
+
+DELIMITER ;
+
+##############
+
+#TRIGGER numero presentazioni (quando aggiungi nuova presentazione a una sessione della conferenza)(incrementare camopo ogni volta che aggiungi una riga in sessione)
+#FUNZIONA
+DELIMITER $ 
+CREATE TRIGGER aggiornamento_numero_presentazioni_DEFINITIVE AFTER INSERT ON Presentazione
+FOR EACH ROW 
+UPDATE sessione SET NumeroPresentazioni=NumeroPresentazioni+1 WHERE IdSessione=NEW.IdSessione;
+DELIMITER ;
+
+#############
+
+SET GLOBAL event_scheduler=ON;
+#con event modifica campo Svolgimento(in conferenza) lo setta a completato quando data ricorrente eccede di 1 gg da ultima data svolgimento di una conf
+#DA RIGUARDARE
+DELIMITER $ 
+CREATE EVENT svolgimento_conferenza_completata ON SCHEDULE EVERY 1 MINUTE
+DO
+    UPDATE Conferenza SET CampoSvolgimento="Completata"
+    WHERE DataSvolgimento<CURRENT_TIMESTAMP();
 DELIMITER ;
