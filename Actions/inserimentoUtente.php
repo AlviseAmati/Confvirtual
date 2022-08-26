@@ -15,6 +15,6 @@ $fSi = "Registrazione effettuata con Successo!";
 $fNo = "Errore nell invio della richiesta";
 #echo $sp;
 
-ControlloModifica($db, $sp, $fSi, $fNo);
+ControlloModificaRegistrati($db, $sp, $fSi, $fNo);
 
 ?>

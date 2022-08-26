@@ -112,7 +112,7 @@
 <p style="text-align: center;">
   <a class="btn btn-secondary" data-toggle="collapse" href="#conferenza" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Visualizza Conferenze disponibili</a>
   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#sessione" aria-expanded="false" aria-controls="multiCollapseExample2">Visualizza Sessioni disponibili</button>
-  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presetnazioni favorite</button>
+  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presentazioni favorite</button>
   
 
   
