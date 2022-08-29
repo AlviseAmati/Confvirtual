@@ -5,12 +5,14 @@ function ControlloModifica($sql_link, $query, $fraseSi, $fraseNo) { #redirect
     mysqli_query($sql_link, $query);
 
     if (mysqli_affected_rows($sql_link) > 0) {
-        echo "<script>
+        creaLog($fraseSi,$query,false);
+       echo "<script>
         location.href= '/Progetto_Basi/confvirtual/Admin.php';
         </script>";
     } else {
+        creaLog($fraseNo,$query,true);
         echo "<script>
-        alert('$fraseNo');
+         alert('$fraseNo');
         location.href= '/Progetto_Basi/confvirtual/Admin.php';
         </script>";
     }
@@ -21,12 +23,14 @@ function ControlloModificaRegistrati($sql_link, $query, $fraseSi, $fraseNo) { #r
     mysqli_query($sql_link, $query);
 
     if (mysqli_affected_rows($sql_link) > 0) {
-        echo "<script>
+        creaLog($fraseSi,$query,false);
+       echo "<script>
         location.href= '/Progetto_Basi/confvirtual/index.php';
         </script>";
     } else {
+        creaLog($fraseNo,$query,true);
         echo "<script>
-        alert('$fraseNo');
+         alert('$fraseNo');
         location.href= '/Progetto_Basi/confvirtual/index.php';
         </script>";
     }
@@ -36,12 +40,14 @@ function ControlloModificaHome($sql_link, $query, $fraseSi, $fraseNo) { #redirec
     mysqli_query($sql_link, $query);
 
     if (mysqli_affected_rows($sql_link) > 0) {
-        echo "<script>
+        creaLog($fraseSi,$query,false);
+       echo "<script>
         location.href= '/Progetto_Basi/confvirtual/Home.php';
         </script>";
     } else {
+        creaLog($fraseNo,$query,true);
         echo "<script>
-        alert('$fraseNo');
+         alert('$fraseNo');
         location.href= '/Progetto_Basi/confvirtual/Home.php';
         </script>";
     }
@@ -50,12 +56,14 @@ function ControlloModificaMessaggio($sql_link, $query, $fraseSi, $fraseNo) { #re
     mysqli_query($sql_link, $query);
 
     if (mysqli_affected_rows($sql_link) > 0) {
-        echo "<script>
+        creaLog($fraseSi,$query,false);
+       echo "<script>
         location.href= '/Progetto_Basi/confvirtual/Actions/paginaSessione.php';
         </script>";
     } else {
+        creaLog($fraseNo,$query,true);
         echo "<script>
-        alert('$fraseNo');
+         alert('$fraseNo');
         location.href= '/Progetto_Basi/confvirtual/Actions/paginaSessione.php';
         </script>";
     }
@@ -65,12 +73,14 @@ function ControlloModificaSpeaker($sql_link, $query, $fraseSi, $fraseNo) { #redi
     mysqli_query($sql_link, $query);
 
     if (mysqli_affected_rows($sql_link) > 0) {
-        echo "<script>
+        creaLog($fraseSi,$query,false);
+       echo "<script>
         location.href= '/Progetto_Basi/confvirtual/Actions/paginaSpeaker.php';
         </script>";
     } else {
+        creaLog($fraseNo,$query,true);
         echo "<script>
-        alert('$fraseNo');
+         alert('$fraseNo');
         location.href= '/Progetto_Basi/confvirtual/Actions/paginaSpeaker.php';
         </script>";
     }
@@ -80,11 +90,13 @@ function ControlloModificaPresenter($sql_link, $query, $fraseSi, $fraseNo) { #re
     mysqli_query($sql_link, $query);
 
     if (mysqli_affected_rows($sql_link) > 0) {
-        echo "<script>
+        creaLog($fraseSi,$query,false);
+       echo "<script>
         location.href= '/Progetto_Basi/confvirtual/Actions/paginaPresenter.php';
         </script>";
     } else {
-        echo "<script>
+        creaLog($fraseNo,$query,true);
+       echo "<script>
         alert('$fraseNo');
         location.href= '/Progetto_Basi/confvirtual/Actions/paginaPresenter.php';
         </script>";
@@ -95,16 +107,69 @@ function ControlloModificaRisorsa($sql_link, $query, $fraseSi, $fraseNo) { #redi
     mysqli_query($sql_link, $query);
 
     if (mysqli_affected_rows($sql_link) > 0) {
-        echo "<script>
-        location.href= '/Progetto_Basi/confvirtual/Actions/paginaRisorsa.php';
+        creaLog($fraseSi,$query,false);
+       echo "<script>
+            location.href= '/Progetto_Basi/confvirtual/Actions/paginaRisorsa.php';
         </script>";
-    } else {
-        echo "<script>
-        alert('$fraseNo');
-        location.href= '/Progetto_Basi/confvirtual/Actions/paginaRisorsa.php';
+    } else { 
+        creaLog($fraseNo,$query,true);
+       echo "<script>
+              alert('$fraseNo');
+             location.href= '/Progetto_Basi/confvirtual/Actions/paginaRisorsa.php';
         </script>";
     }
 }
+
+function creaLog($risultato,$query,$errore){
+    include ('../Actions/Authentication/connessioneDbMongo.php');
+    try {
+        $documentLog = [
+            'utente' => $_SESSION['utente'],  
+            'risultato' => $risultato, 
+            'query' => $query,
+            'errore' => $errore, 
+            'ora' => date("h:i:s")
+        ]; 
+        $collection->insertOne($documentLog);
+    } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -125,10 +190,6 @@ function ControlloModificaRisorsa($sql_link, $query, $fraseSi, $fraseNo) { #redi
 
 
 /*
-
-
-
-
 function ControllaStringa($newname, $name) {
     if( !empty($newname) ) {
         return $newname;

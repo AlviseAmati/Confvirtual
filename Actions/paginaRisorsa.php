@@ -3,7 +3,9 @@
 <?php require('../Actions/connessioneDB.php'); ?>
 
 <?php 
-$_SESSION['IdPresentazione'] = $_POST['IdPresentazione'];
+if(!isset($_SESSION['IdPresentazione'])){
+    $_SESSION['IdPresentazione'] = $_POST['IdPresentazione'];
+}
 
 ?>
 

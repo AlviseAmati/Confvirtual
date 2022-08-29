@@ -17,7 +17,7 @@
   <p style="text-align: center;">
   <a class="btn btn-secondary" data-toggle="collapse" href="#inserisci" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Inserimento dati</a>
   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#risorsa" aria-expanded="false" aria-controls="multiCollapseExample2">Visualizza Risorse aggiuntive</button>
-  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presetnazioni</button>
+  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presentazioni</button>
   
  </p>
 

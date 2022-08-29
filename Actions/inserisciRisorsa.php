@@ -9,12 +9,10 @@
   $IdPresentazione = $_SESSION['IdPresentazione'];
   
 
-  echo $IdRisorsa;
+  
   $sp = 'INSERT INTO risorsaaggiuntiva  (LinkWeb,Descrizione,IdPresentazione,Username) VALUES ("'.$LinkWeb.'","'.$Descrizione.'","'.$IdPresentazione.'","'.$Username.'")';
   #$sp = 'UPDATE risorsaaggiuntiva SET LinkWeb = "'.$LinkWeb.'", Descrizione = "'.$Descrizione.'", IdPresentazione = "'.$IdPresentazione.'"  WHERE Username= "'.$Username.'"';
   $fSi = "Inserimento Universita con Successo!";
-  $fNo = "Errore nell'invio della richiesta";
- 
-  #echo $sp;
+  $fNo = "Errore nell invio della richiesta";
   ControlloModificaRisorsa($db, $sp, $fSi, $fNo);   
 ?> 
