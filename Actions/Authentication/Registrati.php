@@ -14,8 +14,8 @@
       <input type="text" id="login" class="fadeIn second" name="Username" placeholder="Username">
       <input type="text" id="password" class="fadeIn third" name="Nome" placeholder="Nome">
       <input type="text" id="password" class="fadeIn third" name="Cognome" placeholder="Cognome">
-      <input type="text" id="password" class="fadeIn third" name="Password" placeholder="Password">
-      <input type="text" id="password" class="fadeIn third" name="DataNascita" placeholder="Data Nascita (y/m/d)">
+      <input type="password" id="password" class="fadeIn third" name="Password" placeholder="Password">
+      <input type="date" id="password" class="fadeIn third" name="DataNascita" placeholder="Data Nascita (y/m/d)">
       <input type="text" id="password" class="fadeIn third" name="LuogoNascita" placeholder="Luogo Nascita">
       <input type="submit" class="fadeIn fourth" value="Register">
     </form>
