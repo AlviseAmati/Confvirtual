@@ -10,7 +10,8 @@
   $verifica = mysqli_query($db,'SELECT IdPresentazione FROM preferenza WHERE Username="'.$Username.'"');
   $row = $verifica->fetch_array();
 
-  /*if($row[0] > 0 ) {
+  /* se vogliamo fare fare ad utente una sola presetnazione
+  if($row[0] > 0 ) {
     echo "<script>
     alert('Hai gia espresso questa preferenza');
     location.href= '/Progetto_Basi/confvirtual/Actions/paginaSessione.php';

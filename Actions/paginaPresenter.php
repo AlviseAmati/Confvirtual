@@ -17,16 +17,16 @@
 
  <div class="collapse multi-collapse" id="inserisci">
         <h3> Inserisci il tuo CV <h3>
-            <form method="POST" action="./inserisciCvSpeaker.php">
-                <label for="CurriculumSpeaker">Curriculum:</label><br>
-                <input type="text" id="CurriculumSpeaker" name="CurriculumSpeaker" value=""><br><br>
+            <form method="POST" action="./inserisciCvPresenter.php">
+                <label for="CurriculumPresenter">Curriculum:</label><br>
+                <input type="text" id="CurriculumPresenter" name="CurriculumPresenter" value=""><br><br>
                 <input type="submit" value="Submit">
             </form>
 
         <h3> Inserisci la tua foto <h3>
-            <form method="POST" action="./inserisciFotoSpeaker.php">
-                <label for="FotoSpeaker">Foto:</label><br>
-                <input type="text" id="FotoSpeaker" name="FotoSpeaker" value="http"><br><br>
+            <form method="POST" action="./inserisciFotoPresenter.php">
+                <label for="FotoPresenter">Foto:</label><br>
+                <input type="text" id="FotoPresenter" name="FotoPresenter" value="http"><br><br>
                 <input type="submit" value="Submit">
             </form>
 
