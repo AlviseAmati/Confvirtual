@@ -9,8 +9,8 @@
 
   $sp = "DELETE FROM presentazione WHERE IdPresentazione = ".$IdPresentazione."";
 
-  //echo $sp;
+  echo $sp;
   $fSi = "Eliminazione presentazione con Successo!";
   $fNo = "Errore nell invio della richiesta";
-  ControlloModifica($db, $sp, $fSi, $fNo);   
+  //ControlloModifica($db, $sp, $fSi, $fNo);   
 ?> 

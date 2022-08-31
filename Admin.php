@@ -35,7 +35,7 @@
      <label for="name">Nome:</label><br>
      <input type="text" id="name" name="Nome" value="Conferenza1"><br>
      <label for="date">Data Svolgimento:</label><br>
-     <input type="text" id="date" name="DataSvolgimento" value="2022/01/07"><br>
+     <input type="date" id="date" name="DataSvolgimento" value="2022/01/07"><br>
      <label for="logo">Logo:</label><br>
      <input type="text" id="logo" name="Logo" value="http:..."><br><br>
      <input type="submit" value="Submit">

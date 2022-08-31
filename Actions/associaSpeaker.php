@@ -21,7 +21,7 @@
 else{
  echo "<script>
        alert('non stai inserendo un account Speaker');
-       location.href= '/Progetto_Basi/confvirtual/Actions/paginaAssociazioneUtente.php';
+       location.href= '/Progetto_Basi/confvirtual/Admin.php';
        </script>";
 }
 ?> 

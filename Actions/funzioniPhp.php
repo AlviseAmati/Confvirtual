@@ -1,6 +1,7 @@
 <?php
 include ('connessioneDB.php'); 
 
+
 function ControlloModifica($sql_link, $query, $fraseSi, $fraseNo) { #redirect
     mysqli_query($sql_link, $query);
 
@@ -122,6 +123,7 @@ function ControlloModificaRisorsa($sql_link, $query, $fraseSi, $fraseNo) { #redi
 
 function creaLog($risultato,$query,$errore){
     include ('../Actions/Authentication/connessioneDbMongo.php');
+    session_start();
     try {
         $documentLog = [
             'utente' => $_SESSION['utente'],  

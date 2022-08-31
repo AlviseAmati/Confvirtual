@@ -11,6 +11,6 @@
 
   $sp = "call CREA_CONFERENZA ('$AnnoEdizione', '$Acronimo', '$Nome', '$DataSvolgimento', '$Logo')";
   $fSi = "Inserimento nuova Conferenza con Successo!";
-  $fNo = "Errore nell'invio della richiesta";
+  $fNo = "Errore nell invio della richiesta";
   ControlloModifica($db, $sp, $fSi, $fNo);   
 ?> 
