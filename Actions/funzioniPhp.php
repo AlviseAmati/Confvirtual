@@ -130,7 +130,7 @@ function creaLog($risultato,$query,$errore){
             'risultato' => $risultato, 
             'query' => $query,
             'errore' => $errore, 
-            'ora' => date("h:i:s")
+            'ora' => date("d/m/Y H:i:s")
         ]; 
         $collection->insertOne($documentLog);
     } catch (Exception $e) {
