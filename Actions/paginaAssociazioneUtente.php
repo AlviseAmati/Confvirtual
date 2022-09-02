@@ -5,7 +5,7 @@
 
 <title>Associazione</title>
 <br>
-<td><button class="btn btn-outline-secondary" type="submit"><a href="../Admin.php" style="color:grey;"> Torna in dietro</a> </button></form> </td>
+<td><button class="btn btn-outline-secondary" type="submit" style="margin: 10px 10px 10px;"><a href="../Admin.php" style="color:grey;"> Torna in dietro</a> </button></form> </td>
 
 
 

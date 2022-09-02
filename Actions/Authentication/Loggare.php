@@ -1,7 +1,7 @@
 <?php
 
   include '../connessioneDB.php';
-
+  
   // Check the session
   $status = session_status();
   if ($status == PHP_SESSION_NONE) {
@@ -12,6 +12,8 @@
     session_start();
   }
 
+  $fSi = "Utente loggato Successo!";
+  $fNo = "Errore login utente";
   $username = $_POST['username'];
   $password = $_POST['password'];
   $query = "select * from utente where Username = '$username' AND Password = '$password'";
@@ -21,6 +23,7 @@
     while($row = $result->fetch_row()) {
       $_SESSION["utente"] = $row[0];
       $_SESSION["tipo"] = $row[6];
+   
         if($row[6] == 'Amministratore'){
             echo '<script type="text/javascript">
             location.href = "/Progetto_Basi/confvirtual/Home.php";
@@ -41,4 +44,6 @@
         alert("Utente non trovato. Riprova");
         location.href = "/Progetto_Basi/confvirtual/Actions/Authentication/LogIn.php";
       </script>';
-}
+  }
+
+?> 

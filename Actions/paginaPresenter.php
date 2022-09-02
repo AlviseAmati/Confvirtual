@@ -6,7 +6,7 @@
 <title>Pagina Speaker</title>
 
 <br>
-<td><button   class="btn btn-outline-secondary" type="submit"><a href="../Home.php" style="color:grey;"> Torna a pag. Presenter</a> </button></form> </td>
+<td><button   class="btn btn-outline-secondary" type="submit" style="margin: 10px 10px 10px;"><a href="../Home.php" style="color:grey;"> Torna a pag. Presenter</a> </button></form> </td>
 
 <h1 style="text-align: center;"> Sezione Presenter </h1>
 
@@ -15,7 +15,7 @@
   
  </p>
 
- <div class="collapse multi-collapse" id="inserisci">
+ <div class="collapse multi-collapse" id="inserisci" style="margin-Left: 1%; margin-Right: 5%;">
         <h3> Inserisci il tuo CV <h3>
             <form method="POST" action="./inserisciCvPresenter.php">
                 <label for="CurriculumPresenter">Curriculum:</label><br>
@@ -93,7 +93,7 @@
             
             ?>
 
-</div>
+    </div>
 
   </div>
 </section>

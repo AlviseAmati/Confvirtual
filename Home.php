@@ -120,8 +120,8 @@
 
 
 
-  <div class="collapse multi-collapse" id="conferenza">
-    <h2>Visualizza Conferenze Disponibili:</h2>
+  <div class="collapse multi-collapse" id="conferenza" style="margin-Left: 2%; margin-Right: 2%;">
+     <h2>Visualizza Conferenze Disponibili:</h2>
           <?php 
                   
                   $result = mysqli_query($db, "SELECT * FROM VISUALIZZA_CONFERENZE");
@@ -215,10 +215,10 @@
             }
         
         ?>
-</div>
+    </div>
 <br><br>
  
-<div class="collapse multi-collapse" id="sessione">
+<div class="collapse multi-collapse" id="sessione" style="margin-Left: 2%; margin-Right: 2%;">
  <h2>Visualizza le  Sessioni disponibili:</h2>
 
           <?php  
@@ -268,7 +268,7 @@
           ?>
 </div> 
 <br><br>
-<div class="collapse multi-collapse" id="presentazione">
+<div class="collapse multi-collapse" id="presentazione" style="margin-Left: 2%; margin-Right: 2%;">
  <h2>Visualizza le  tue presentazioni favorite:</h2>
 
  <?php  

@@ -11,8 +11,8 @@
   $Titolo = $_POST['Titolo'];
 
   $sp = "call CREA_SESSIONE ('$NumeroPresentazioni', '$LinkTeams', '$OraFine', '$OraInizio', '$Titolo')";
-  echo $sp;
+  //echo $sp;
   $fSi = "Inserimento nuova Sessione con Successo!";
   $fNo = "Errore nell invio della richiesta";
-  //ControlloModifica($db, $sp, $fSi, $fNo);   
+  ControlloModifica($db, $sp, $fSi, $fNo);   
 ?> 

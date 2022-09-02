@@ -5,7 +5,7 @@
 <?php $_SESSION['IdSessione'] = $_POST['IdSessione'];?>
 <title>Inserisci Presentazione</title>
 
-<td><button  type="submit"><a href="../Admin.php"> Torna in dietro</a> </button></form> </td>
+<td><button  class="btn btn-outline-secondary" type="submit" style="margin: 10px 10px 10px;"><a href="../Admin.php" style="color:grey;"> Torna in dietro</a> </button></form> </td>
 
 
 
@@ -21,9 +21,9 @@
             <label for="NumSequenze">Numero Sequenze:</label><br>
             <input type="text" id="NumSequenze" name="NumSequenze" value="5"><br>
             <label for="OrarioFine">Orario Fine:</label><br>
-            <input type="text" id="OrarioFine" name="OrarioFine" value="10:00:00"><br>
+            <input type="time" id="OrarioFine" name="OrarioFine" value="10:00:00"><br>
             <label for="OrarioInizio">Orario Inizio:</label><br>
-            <input type="text" id="OrarioInizio" name="OrarioInizio" value="08:00:00"><br>
+            <input type="time" id="OrarioInizio" name="OrarioInizio" value="08:00:00"><br>
             <label for="Titolo">Titolo:</label><br>
             <input type="text" id="Titolo" name="Titolo" value="Art/Tout 1"><br>
             <label for="Pdf">Pdf:</label><br>
@@ -33,7 +33,12 @@
             <label for="Abstract">Abstract:</label><br>
             <input type="text" id="Abstract" name="Abstract" value="..."><br>
             <label for="Tipo">Tipo:</label><br>
-            <input type="text" id="Tipo" name="Tipo" value="Articolo / Tutorial"><br><br>
+            <select name="Tipo" >
+            <option  value="Articolo" selected="selected">Articolo </option>
+            <option  value="Tutorial">Tutorial </option>
+            </select><br><br>
+            
+
             <input type="submit" value="Submit">
           </form>
 

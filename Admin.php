@@ -6,7 +6,7 @@
 <title>Homepage</title>
 
 <br>
-<td><button  class="btn btn-outline-secondary" type="submit"><a href="./Home.php" style="color:grey;"> Vai alla Home</a> </button></form> </td>
+<td><button  class="btn btn-outline-secondary" type="submit" style="margin: 10px 10px 10px;"><a href="./Home.php" style="color:grey;"> Vai alla Home</a> </button></form> </td>
 
 <section>
   <div class="col-12">
@@ -100,9 +100,9 @@
             <label for="LinkTeams">Link Teams:</label><br>
             <input type="text" id="LinkTeams" name="LinkTeams" value="https://"><br>
             <label for="OraFine">Ora Fine:</label><br>
-            <input type="text" id="OraFine" name="OraFine" value="10:00:00"><br>
+            <input type="time" id="OraFine" name="OraFine" value="10:00:00"><br>
             <label for="OraInizio">Ora Inizio:</label><br>
-            <input type="text" id="OraInizio" name="OraInizio" value="08:00:00"><br>
+            <input type="time" id="OraInizio" name="OraInizio" value="08:00:00"><br>
             <label for="Titolo">Titolo:</label><br>
             <input type="text" id="Titolo" name="Titolo" value="Sessione1"><br><br>
             <input type="submit" value="Submit">
