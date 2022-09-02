@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 26, 2022 alle 15:52
+-- Creato il: Set 02, 2022 alle 13:52
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -68,10 +68,26 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `INSERIMENTO_CHAT` (IN `IdSessioneNe
     COMMIT;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `INSERISCI_CV_PRESENTER` (IN `Usernamenew` VARCHAR(45), IN `CurriculumPresenternew` VARCHAR(30))   BEGIN 
+	START TRANSACTION;
+    update Utente
+    set CurriculumPresenter=CurriculumPresenternew
+    WHERE Username=Usernamenew;
+    COMMIT;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `INSERISCI_CV_SPEAKER` (IN `Usernamenew` VARCHAR(45), IN `CurriculumSpeakernew` VARCHAR(30))   BEGIN 
 	START TRANSACTION;
     update Utente
     set CurriculumSpeaker=CurriculumSpeakernew
+    WHERE Username=Usernamenew;
+    COMMIT;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `INSERISCI_Foto_Presenter` (IN `Usernamenew` VARCHAR(45), IN `FotoPresenterNew` VARCHAR(45))   BEGIN
+	START TRANSACTION;
+    update Utente
+    set FotoPresenter=FotoPresenterNew
     WHERE Username=Usernamenew;
     COMMIT;
 END$$
@@ -204,7 +220,7 @@ INSERT INTO `conferenza` (`IdConferenza`, `AnnoEdizione`, `Acronimo`, `Nome`, `S
 (2, 2022, 'C2', 'Conferenza2', 15, '2022-02-09', 'http', 'Completata'),
 (3, 2022, 'C3', 'Conferenza3', 12, '2022-03-07', 'http', 'Completata'),
 (4, 2022, 'C4', 'Conferenza4', 12, '2022-03-07', 'http', 'Completata'),
-(10, 1999, 'C1', 'Conferenza1', 0, '2022-08-13', 'http:...', 'Completata');
+(11, 1999, 'C5', 'Conferenza5', 0, '2022-08-12', 'http:...', 'Attiva');
 
 -- --------------------------------------------------------
 
@@ -249,7 +265,9 @@ CREATE TABLE `messaggio` (
 
 INSERT INTO `messaggio` (`IdMessaggio`, `IdSessione`, `Testo`, `Data`, `Username`) VALUES
 (1, 1, 'Ciao messaggio 1', '1999-03-30 12:00:00', 'Alvi'),
-(2, 1, 'il mio messaggioxz', '2022-08-14 09:30:07', 'Presenter');
+(2, 1, 'il mio messaggioxz', '2022-08-14 09:30:07', 'Presenter'),
+(3, 4, 'il mio messaggio', '2022-08-31 05:31:36', 'Speaker'),
+(4, 1, 'ciao', '2022-09-01 11:09:19', 'Speaker');
 
 -- --------------------------------------------------------
 
@@ -282,7 +300,15 @@ INSERT INTO `preferenza` (`IdPresentazione`, `Username`) VALUES
 (1, 'Presenter'),
 (1, 'Presenter'),
 (1, 'Presenter'),
-(1, 'Presenter');
+(1, 'Presenter'),
+(13, 'Speaker'),
+(1, 'Speaker'),
+(7, 'Speaker'),
+(4, 'Speaker'),
+(4, 'Alvi'),
+(4, 'Speaker'),
+(4, 'Speaker'),
+(4, 'Speaker');
 
 -- --------------------------------------------------------
 
@@ -313,19 +339,24 @@ INSERT INTO `presentazione` (`IdPresentazione`, `NumSequenze`, `OrarioFine`, `Or
 (1, '3', '12:00:00', '09:00:00', 'Articolo1', 'pdf1', 22, 'Coperto', NULL, 1, 'Articolo', 'Presenter'),
 (2, '5', '16:00:00', '14:00:00', 'Articolo2', 'pdf2', 22, 'Coperto', NULL, 2, 'Articolo', 'Presenter'),
 (3, '3', '12:00:00', '09:00:00', 'Tutorial1', NULL, NULL, 'Coperto', 'tutorial 1 abstract', 3, 'Tutorial', 'Speaker'),
-(4, '5', '16:00:00', '14:00:00', 'Tutorial2', NULL, NULL, NULL, 'tutorial 2 abstract', 4, 'Tutorial', NULL),
-(7, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 1, 'Articolo', NULL),
+(4, '5', '16:00:00', '14:00:00', 'Tutorial2', NULL, NULL, NULL, 'tutorial 2 abstract', 4, 'Tutorial', 'Speaker'),
+(7, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Coperto', '...', 1, 'Articolo', 'Presenter'),
 (8, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 1, 'Articolo', NULL),
 (10, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 1, 'Articolo', NULL),
 (11, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 1, 'Articolo', NULL),
 (12, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 2, 'Tutorial', NULL),
-(13, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 1, 'Tutorial', NULL);
+(13, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 1, 'Tutorial', NULL),
+(14, '5', '10:00:00', '08:00:00', 'Art/Tout 1', 'pdf1', 23, 'Non Coperto', '...', 25, '', NULL);
 
 --
 -- Trigger `presentazione`
 --
 DELIMITER $$
 CREATE TRIGGER `aggiornamento_numero_presentazioni_DEFINITIVE` AFTER INSERT ON `presentazione` FOR EACH ROW UPDATE sessione SET NumeroPresentazioni=NumeroPresentazioni+1 WHERE IdSessione=NEW.IdSessione
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `stato_svolgimento` BEFORE UPDATE ON `presentazione` FOR EACH ROW SET NEW.StatoSvolgimento = IF( NEW.Username IS NOT NULL, "Coperto", "Non Coperto")
 $$
 DELIMITER ;
 
@@ -402,7 +433,8 @@ INSERT INTO `risorsaaggiuntiva` (`IdRisorsa`, `LinkWeb`, `Descrizione`, `IdPrese
 (1, 'http', 'risorsa1', 3, 'Alvi'),
 (2, 'http', 'risorsa2', 1, 'Alvi'),
 (3, 'http', 'risorsa3', 2, 'Alvi'),
-(5, 'http pesa', 'risorsa aggiustta', 4, 'Speaker');
+(97, 'http', 'risorsa..', 13, 'Speaker'),
+(154, 'http', 'risorsa 8', 13, 'Speaker');
 
 -- --------------------------------------------------------
 
@@ -428,15 +460,8 @@ INSERT INTO `sessione` (`IdSessione`, `NumeroPresentazioni`, `LinkTeams`, `OraFi
 (1, '13', 'http', '12:00:00', '09:00:00', 'Sessione1', 1),
 (2, '22', 'http', '16:00:00', '14:00:00', 'Sessione2', 2),
 (3, '32', 'http', '19:00:00', '17:00:00', 'Sessione3', 3),
-(4, '32', 'http', '19:00:00', '17:00:00', 'Sessione4', 4);
-
---
--- Trigger `sessione`
---
-DELIMITER $$
-CREATE TRIGGER `aggiornamento_numero_presentazioni` AFTER INSERT ON `sessione` FOR EACH ROW UPDATE sessione SET NumeroPresentazioni=NumeroPresentazioni+1 WHERE IdSessione=@IdSessione
-$$
-DELIMITER ;
+(4, '32', 'http', '19:00:00', '17:00:00', 'Sessione4', 4),
+(25, '11', 'https://', '10:00:00', '08:00:00', 'Sessione5', NULL);
 
 -- --------------------------------------------------------
 
@@ -457,7 +482,8 @@ CREATE TABLE `sponsor` (
 INSERT INTO `sponsor` (`IdSponsor`, `Nome`, `ImmagineLogo`) VALUES
 (1, 'Bialetti', 'http'),
 (2, 'Apple', 'http'),
-(7, 'Alvi2', 'http');
+(7, 'Alvi2', 'http'),
+(8, 'Alvi', 'http');
 
 -- --------------------------------------------------------
 
@@ -496,19 +522,23 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`Username`, `Nome`, `Password`, `DataNascita`, `Cognome`, `LuogoNascita`, `Tipo`, `FotoPresenter`, `CurriculumPresenter`, `CurriculumSpeaker`, `FotoSpeaker`, `IdUniversita`) VALUES
-('', '', 'd41d8cd98f00b204e9800998ecf8427e', '1970-01-01', '', '', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('Alvi', 'Amati', 'Alvi', '1999-03-30', 'Amati', 'Rimini', 'Amministratore', NULL, NULL, NULL, NULL, NULL),
-('Aspi', 'Andrea', 'Aspi', '1998-03-13', 'Asperti', 'Monza', 'Amministratore', NULL, NULL, NULL, NULL, NULL),
-('Cejka', 'Alvi', '5aa9114de7d21806f68693601b5842d9', '2001-03-03', 'Alvi', 'Rimini', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('Fabio', 'Fabio', 'Fabio', '1998-09-01', 'Cejka', 'Vienna', 'Amministratore', NULL, NULL, NULL, NULL, NULL),
-('ggggg', 'aaaa', '5aa9114de7d21806f68693601b5842d9', '2021-02-01', 'ddddd', 'maria', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('Presenter', 'Giulio', '123', '1996-05-15', 'Bianchi', 'Milano', 'Presenter', 'https://Presenter', 'Buongiorno, Presenter 1', 'ciao', 'httpss', 2),
-('prova', 'prova', '202cb962ac59075b964b07152d234b70', '2020-02-02', 'prova', 'Rimini', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('prova1', 'pinko', '202cb962ac59075b964b07152d234b70', '2020-03-02', 'pallino ', 'rimini', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('prova2', 'prova2', '202cb962ac59075b964b07152d234b70', '2020-02-01', 'prova2', 'roma', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('provaform', 'a', '202cb962ac59075b964b07152d234b70', '2001-03-02', 'a', 'Rimini', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('Speaker', 'Marco', '123', '1997-04-14', 'Rossi', 'Roma', 'Speaker', NULL, NULL, '123', 'httpsss', 2),
-('Utente', 'Alessandro', '123', '1995-02-12', 'Neri', 'Torino', 'Utente', NULL, NULL, NULL, NULL, NULL);
+('', '', 'd41d8cd98f00b204e9800998ecf8427e', '1970-01-01', '', '', 'Utente', NULL, '0', NULL, NULL, NULL),
+('Alvi', 'Amati', 'Alvi', '1999-03-30', 'Amati', 'Rimini', 'Amministratore', NULL, '0', NULL, NULL, NULL),
+('Aspi', 'Andrea', 'Aspi', '1998-03-13', 'Asperti', 'Monza', 'Amministratore', NULL, '0', NULL, NULL, NULL),
+('Cejka', 'Alvi', '5aa9114de7d21806f68693601b5842d9', '2001-03-03', 'Alvi', 'Rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
+('dasdas', 'sdad', 'a8f5f167f44f4964e6c998dee827110c', '1970-01-01', 'sadasd', '', 'Utente', NULL, '0', NULL, NULL, NULL),
+('Fabio', 'Fabio', 'Fabio', '1998-09-01', 'Cejka', 'Vienna', 'Amministratore', NULL, '0', NULL, NULL, NULL),
+('ggggg', 'aaaa', '5aa9114de7d21806f68693601b5842d9', '2021-02-01', 'ddddd', 'maria', 'Utente', NULL, '0', NULL, NULL, NULL),
+('iphone', 'aldo', '202cb962ac59075b964b07152d234b70', '2022-02-02', 'aldii', 'rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
+('jaime', 'lannister', '202cb962ac59075b964b07152d234b70', '2022-08-09', 'lannister', 'Rimii', 'Utente', NULL, '0', NULL, NULL, NULL),
+('Presenter', 'Giulio', '123', '1996-05-15', 'Bianchi', 'Milano', 'Presenter', 'http', 'prova', 'prova', 'https prese', 2),
+('prova', 'prova', '202cb962ac59075b964b07152d234b70', '2020-02-02', 'prova', 'Rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
+('prova1', 'pinko', '202cb962ac59075b964b07152d234b70', '2020-03-02', 'pallino ', 'rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
+('prova2', 'prova2', '202cb962ac59075b964b07152d234b70', '2020-02-01', 'prova2', 'roma', 'Utente', NULL, '0', NULL, NULL, NULL),
+('provaform', 'a', '202cb962ac59075b964b07152d234b70', '2001-03-02', 'a', 'Rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
+('sdad', 'asdasd', '4d18db80e353e526ad6d42a62aaa29be', '1970-01-01', 'asdas', 'asda', 'Utente', NULL, '0', NULL, NULL, NULL),
+('Speaker', 'Marco', '123', '1997-04-14', 'Rossi', 'Roma', 'Speaker', NULL, '0', 'curriculum', 'http foto prova', 1),
+('Utente', 'Alessandro', '123', '1995-02-12', 'Neri', 'Torino', 'Utente', NULL, '0', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -530,7 +560,8 @@ CREATE TABLE `valuta` (
 INSERT INTO `valuta` (`Username`, `IdPresentazione`, `Voto`, `Note`) VALUES
 ('Alvi', 1, 1, 'nota'),
 ('Alvi', 2, 2, 'nota'),
-('Alvi', 3, 3, 'nota');
+('Alvi', 3, 3, 'nota'),
+('Alvi', 4, 1, 'nota');
 
 -- --------------------------------------------------------
 
@@ -736,7 +767,7 @@ ALTER TABLE `affiliazioneuniversita`
 -- AUTO_INCREMENT per la tabella `conferenza`
 --
 ALTER TABLE `conferenza`
-  MODIFY `IdConferenza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `IdConferenza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `listaparolechiave`
@@ -748,13 +779,13 @@ ALTER TABLE `listaparolechiave`
 -- AUTO_INCREMENT per la tabella `messaggio`
 --
 ALTER TABLE `messaggio`
-  MODIFY `IdMessaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdMessaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `presentazione`
 --
 ALTER TABLE `presentazione`
-  MODIFY `IdPresentazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `IdPresentazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT per la tabella `programmagiornaliero`
@@ -766,19 +797,19 @@ ALTER TABLE `programmagiornaliero`
 -- AUTO_INCREMENT per la tabella `risorsaaggiuntiva`
 --
 ALTER TABLE `risorsaaggiuntiva`
-  MODIFY `IdRisorsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IdRisorsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT per la tabella `sessione`
 --
 ALTER TABLE `sessione`
-  MODIFY `IdSessione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IdSessione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT per la tabella `sponsor`
 --
 ALTER TABLE `sponsor`
-  MODIFY `IdSponsor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IdSponsor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Limiti per le tabelle scaricate
