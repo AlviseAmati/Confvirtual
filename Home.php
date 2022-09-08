@@ -124,7 +124,7 @@
      <h2>Visualizza Conferenze Disponibili:</h2>
           <?php 
                   
-                  $result = mysqli_query($db, "SELECT * FROM VISUALIZZA_CONFERENZE");
+                  $result = mysqli_query($db, "SELECT IdConferenza,AnnoEdizione,Acronimo,Nome,SponsorizzazioniTotali,DataSvolgimento,Logo FROM conferenza WHERE CampoSvolgimento='Attiva'");
                   if(mysqli_num_rows($result) > 0) {
 
                     echo "<table class='table table-dark table-striped'>";
@@ -173,7 +173,7 @@
 
            <?php  
                   
-                  $result = mysqli_query($db, "SELECT * FROM registra");
+                  $result = mysqli_query($db, "SELECT Nome,Username FROM registra INNER JOIN conferenza ON conferenza.IdConferenza=registra.IdConferenza");
                   if(mysqli_num_rows($result) > 0) {
 
                     echo "<table class='table table-dark table-striped'>";

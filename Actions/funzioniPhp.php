@@ -121,6 +121,23 @@ function ControlloModificaRisorsa($sql_link, $query, $fraseSi, $fraseNo) { #redi
     }
 }
 
+function ControlloModificaAutore($sql_link, $query, $fraseSi, $fraseNo) { #redirect
+    mysqli_query($sql_link, $query);
+
+    if (mysqli_affected_rows($sql_link) > 0) {
+        creaLog($fraseSi,$query,false);
+       echo "<script>
+            location.href= '/Progetto_Basi/confvirtual/Actions/paginaInserisciAutore.php';
+        </script>";
+    } else { 
+        creaLog($fraseNo,$query,true);
+       echo "<script>
+              alert('$fraseNo');
+             location.href= '/Progetto_Basi/confvirtual/Actions/paginaInserisciAutore.php';
+        </script>";
+    }
+}
+
 function creaLog($risultato,$query,$errore){
     include ('../Actions/Authentication/connessioneDbMongo.php');
     session_start();

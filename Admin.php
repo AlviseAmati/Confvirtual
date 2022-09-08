@@ -20,6 +20,7 @@
   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#presentazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Visualizza Presetnazioni/Associa Utente</button>
   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#valutazione" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Valutazioni</button>
   <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#sponsor" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Sponsor</button>
+  <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#sponsorizazzione" aria-expanded="false" aria-controls="multiCollapseExample2"> Inserisci Sponsorizzazione</button>
 
   
  </p>
@@ -194,10 +195,19 @@
                 #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
          ?>
 
+                <td><form action="Actions/eliminaPresentazione.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
+                <td><form action="Actions/paginaAssociazioneUtente.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $row[0]; ?>"></input><input type="hidden" name="Tipo" value="<?php  echo $row[10]; ?>"></input><button type="submit"> Associa </button></form> </td>
               
-              <td><form action="Actions/eliminaPresentazione.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $value; ?>"></input><button type="submit"> Elimina </button></form> </td>
-              <td><form action="Actions/paginaAssociazioneUtente.php" method="POST"><input type="hidden" name="IdPresentazione" value="<?php  echo $row[0]; ?>"></input><input type="hidden" name="Tipo" value="<?php  echo $row[10]; ?>"></input><button type="submit"> Associa </button></form> </td>
-              
+              <?php 
+              if($row[10]=="Articolo"){
+                echo '
+                
+                <td><form action="Actions/paginaInserisciAutore.php" method="POST"><input type="hidden" name="IdPresentazione" value="'.$value.'"></input><button type="submit"> Visualizza/Inserisci Autori </button></form> </td>
+              ';
+            }
+            
+            
+              ?>
         <?php
                     echo "</tr>";
                 }
@@ -208,6 +218,8 @@
             }
         
         ?>
+
+        
 </div>
 <br><br>          
 
@@ -335,6 +347,108 @@
         ?>
 </div>
  <br><br>
+
+ <div class="collapse multi-collapse" id="sponsorizazzione">
+    <p> scegli la conferenza su cui vuoi inserire la sponsorizazzione</p>
+        <h3>Visualizza Conferenze:</h3>
+        
+        <?php 
+        
+            $result = mysqli_query($db, "SELECT * FROM conferenza");
+            if(mysqli_num_rows($result) > 0) {
+
+            echo "<table class='table table-dark table-striped'>";
+            echo "<thead> <tr>";
+
+            $field = $result->fetch_fields();
+            $fields = array();
+            $j = 0;
+            foreach ($field as $col) {
+                echo "<th>" . $col->name . "</th>";
+                array_push($fields, array(++$j, $col->name));
+            }
+
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+
+                for ($i = 0; $i < sizeof($fields); $i++) {
+                    $fieldname = $fields[$i][1];
+                    $filedvalue = $row[$fieldname];
+                    echo "<td>" . $filedvalue . "</td>";
+                }
+
+                $value = $row[0];
+                #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+            ?>
+
+                
+                <td><form action="Actions/paginaInserisciSponsorizazzione.php" method="POST"><input type="hidden" name="IdConferenza" value="<?php  echo $value; ?>"></input><button type="submit"> Scegli </button></form> </td>
+                
+        <?php
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+            } else {
+                echo '<center> <h4> Non ci sono risultati </h4> </center>';
+            }
+        
+        ?>
+
+
+    <h4>Visualizza Sponsorizzazioni:</h4>
+            <?php 
+            
+            $result = mysqli_query($db, "SELECT * FROM dispone");
+            if(mysqli_num_rows($result) > 0) {
+
+                echo "<table class='table table-dark table-striped'>";
+                echo "<thead> <tr>";
+        
+                $field = $result->fetch_fields();
+                $fields = array();
+                $j = 0;
+                foreach ($field as $col) {
+                    echo "<th>" . $col->name . "</th>";
+                    array_push($fields, array(++$j, $col->name));
+                }
+
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+        
+                while ($row = $result->fetch_array()) {
+                    echo "<tr>";
+
+                    for ($i = 0; $i < sizeof($fields); $i++) {
+                        $fieldname = $fields[$i][1];
+                        $filedvalue = $row[$fieldname];
+                        echo "<td>" . $filedvalue . "</td>";
+                    }
+        
+                    $value = $row[0];
+                    $Id = $row[1];
+                    #Aggiunto form per ogni bottone con all'interno un campo nascosto con il valore dell' id da cancellare
+            ?>
+
+                
+
+            <?php
+                        echo "</tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                } else {
+                    echo '<center> <h4> Non ci sono risultati </h4> </center>';
+                }
+            
+            ?>
+          
+</div>
 
 
 
