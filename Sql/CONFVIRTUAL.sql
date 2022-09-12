@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 08, 2022 alle 20:39
+-- Creato il: Set 12, 2022 alle 14:06
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.29
 
@@ -506,7 +506,8 @@ CREATE TABLE `sponsor` (
 INSERT INTO `sponsor` (`IdSponsor`, `Nome`, `ImmagineLogo`) VALUES
 (1, 'Bialetti', 'http'),
 (2, 'Apple', 'http'),
-(7, 'Alvi2', 'http');
+(7, 'Alvi2', 'http'),
+(9, 'Pirelli', 'http');
 
 -- --------------------------------------------------------
 
@@ -546,21 +547,13 @@ CREATE TABLE `utente` (
 
 INSERT INTO `utente` (`Username`, `Nome`, `Password`, `DataNascita`, `Cognome`, `LuogoNascita`, `Tipo`, `FotoPresenter`, `CurriculumPresenter`, `CurriculumSpeaker`, `FotoSpeaker`, `IdUniversita`) VALUES
 ('', '', 'd41d8cd98f00b204e9800998ecf8427e', '1970-01-01', '', '', 'Utente', NULL, '0', NULL, NULL, NULL),
+('Admin', 'Admin', '123', '2022-09-07', 'Admin', 'Rimini', 'Amministratore', NULL, NULL, NULL, NULL, NULL),
 ('Alvi', 'Amati', 'Alvi', '1999-03-30', 'Amati', 'Rimini', 'Amministratore', NULL, '0', NULL, NULL, NULL),
 ('Aspi', 'Andrea', 'Aspi', '1998-03-13', 'Asperti', 'Monza', 'Amministratore', NULL, '0', NULL, NULL, NULL),
 ('Cejka', 'Alvi', '5aa9114de7d21806f68693601b5842d9', '2001-03-03', 'Alvi', 'Rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
-('dasdas', 'sdad', 'a8f5f167f44f4964e6c998dee827110c', '1970-01-01', 'sadasd', '', 'Utente', NULL, '0', NULL, NULL, NULL),
 ('Fabio', 'Fabio', 'Fabio', '1998-09-01', 'Cejka', 'Vienna', 'Amministratore', NULL, '0', NULL, NULL, NULL),
-('FabioMT', 'matthias', '202cb962ac59075b964b07152d234b70', '2022-09-09', 'cejka', 'Austria', 'Utente', NULL, NULL, NULL, NULL, NULL),
-('ggggg', 'aaaa', '5aa9114de7d21806f68693601b5842d9', '2021-02-01', 'ddddd', 'maria', 'Utente', NULL, '0', NULL, NULL, NULL),
-('iphone', 'aldo', '202cb962ac59075b964b07152d234b70', '2022-02-02', 'aldii', 'rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
-('jaime', 'lannister', '202cb962ac59075b964b07152d234b70', '2022-08-09', 'lannister', 'Rimii', 'Utente', NULL, '0', NULL, NULL, NULL),
 ('Presenter', 'Giulio', '123', '1996-05-15', 'Bianchi', 'Milano', 'Presenter', 'http', 'prova', 'prova', 'https prese', 2),
 ('prova', 'prova', '202cb962ac59075b964b07152d234b70', '2020-02-02', 'prova', 'Rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
-('prova1', 'pinko', '202cb962ac59075b964b07152d234b70', '2020-03-02', 'pallino ', 'rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
-('prova2', 'prova2', '202cb962ac59075b964b07152d234b70', '2020-02-01', 'prova2', 'roma', 'Utente', NULL, '0', NULL, NULL, NULL),
-('provaform', 'a', '202cb962ac59075b964b07152d234b70', '2001-03-02', 'a', 'Rimini', 'Utente', NULL, '0', NULL, NULL, NULL),
-('sdad', 'asdasd', '4d18db80e353e526ad6d42a62aaa29be', '1970-01-01', 'asdas', 'asda', 'Utente', NULL, '0', NULL, NULL, NULL),
 ('Speaker', 'Marco', '123', '1997-04-14', 'Rossi', 'Roma', 'Speaker', NULL, '0', 'cv', 'http foto prova', 1),
 ('Utente', 'Alessandro', '123', '1995-02-12', 'Neri', 'Torino', 'Utente', NULL, '0', NULL, NULL, NULL);
 
@@ -826,7 +819,7 @@ ALTER TABLE `sessione`
 -- AUTO_INCREMENT per la tabella `sponsor`
 --
 ALTER TABLE `sponsor`
-  MODIFY `IdSponsor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `IdSponsor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Limiti per le tabelle scaricate
