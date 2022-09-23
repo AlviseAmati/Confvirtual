@@ -173,7 +173,7 @@
 
            <?php  
                   
-                  $result = mysqli_query($db, "SELECT Nome,Username FROM registra INNER JOIN conferenza ON conferenza.IdConferenza=registra.IdConferenza");
+                  $result = mysqli_query($db, "SELECT Nome,Username FROM registra INNER JOIN conferenza ON conferenza.IdConferenza=registra.IdConferenza WHERE Username= '".$_SESSION['utente']."'");
                   if(mysqli_num_rows($result) > 0) {
 
                     echo "<table class='table table-dark table-striped'>";
