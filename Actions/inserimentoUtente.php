@@ -12,7 +12,7 @@ $LuogoNascita = $_POST['LuogoNascita'];
 
 $sp = "call REGISTRA_UTENTE ('$Username', '$Nome', '$Cognome', '$Password', '$DataNascita', '$LuogoNascita')"; 
 $fSi = "Registrazione effettuata con Successo!";
-$fNo = "Errore nell invio della richiesta";
+$fNo = "Registrazione non riuscita, Username gia esistente/Errore compilazione";
 #echo $sp;
 
 ControlloModificaRegistrati($db, $sp, $fSi, $fNo);

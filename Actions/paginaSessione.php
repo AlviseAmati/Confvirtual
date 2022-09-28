@@ -73,7 +73,7 @@
 
 echo  'Puoi scrivere fra le '. $_SESSION["OraInizio"]. ' e le ' .$_SESSION["OraFine"];
 
-if ( date("H:i:s")>=$_SESSION["OraInizio"] && date("H:i:s")<=$_SESSION["OraFine"]) {
+if ( date("H:i:s")>=$_SESSION["OraInizio"] && date("H:i:s")<=$_SESSION["OraFine"]) { 
         echo '<form method="POST" action="./inserisciMessaggio.php">
             <label for="Testo">Testo:</label><br>
             <input type="text" id="Testo" name="Testo" value="il mio messaggio"><br><br>
@@ -81,7 +81,7 @@ if ( date("H:i:s")>=$_SESSION["OraInizio"] && date("H:i:s")<=$_SESSION["OraFine"
             </form>';
 }
 else{
-    echo "non sei nell ora giusta";
+    echo "<br> non sei nell ora giusta";
 }
 ?>
 
