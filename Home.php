@@ -1,9 +1,10 @@
 <?php require('./Components/head.php'); ?>
 <?php require('./Components/navbar.php'); ?>
-<?php require('./Actions/Authentication/ControlloUtente.php'); ?>
 <?php require('./Actions/connessioneDB.php'); ?>
+<?php $_SESSION['Pagina']= 'Home' ?>
+<?php require('./Actions/Authentication/ControlloUtente.php'); ?>
 
-<title>Homepage</title>
+<title>Home</title>
 <br>
 <h1 style="text-align: center;"> Benvenuto
 <p style="color:red;">

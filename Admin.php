@@ -1,6 +1,7 @@
 <?php require('./Components/head.php'); ?>
 <?php require('./Components/navbar.php'); ?>
 <?php require('./Actions/connessioneDB.php'); ?>
+<?php $_SESSION['Pagina']= 'Amministratore' ?>
 <?php require('./Actions/Authentication/ControlloUtente.php'); ?>
 
 <title>Homepage</title>

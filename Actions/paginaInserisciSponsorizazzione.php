@@ -2,6 +2,10 @@
 <?php require('../Components/navbar.php'); ?>
 <?php require('../Actions/connessioneDB.php'); ?>
 
+
+<?php $_SESSION['Pagina']= 'Amministratore' ?>
+<?php require('./Authentication/ControlloUtente.php'); ?>
+
 <title>Inserisci Sponsorizazzione</title>
 
 <td><button  class="btn btn-outline-secondary" type="submit" style="margin: 10px 10px 10px;"><a href="../Admin.php" style="color:grey;"> Torna in dietro</a> </button></form> </td>

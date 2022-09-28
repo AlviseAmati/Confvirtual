@@ -1,6 +1,9 @@
 <?php require('../Components/head.php'); ?>
 <?php require('../Components/navbar.php'); ?>
 <?php require('../Actions/connessioneDB.php'); ?>
+<?php $_SESSION['Pagina']= 'Speaker' ?>
+<?php require('./Authentication/ControlloUtente.php'); ?>
+
 
 <?php 
 if(!isset($_SESSION['IdPresentazione'])){

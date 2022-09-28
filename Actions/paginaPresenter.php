@@ -2,6 +2,8 @@
 <?php require('../Components/navbar.php'); ?>
 <?php require('../Actions/connessioneDB.php'); ?>
 
+<?php $_SESSION['Pagina']= 'Presenter' ?>
+<?php require('./Authentication/ControlloUtente.php'); ?>
 
 <title>Pagina Speaker</title>
 

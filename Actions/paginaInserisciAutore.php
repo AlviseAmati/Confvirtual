@@ -1,6 +1,10 @@
 <?php require('../Components/head.php'); ?>
 <?php require('../Components/navbar.php'); ?>
 <?php require('../Actions/connessioneDB.php'); ?>
+
+
+<?php $_SESSION['Pagina']= 'Amministratore' ?>
+<?php require('./Authentication/ControlloUtente.php'); ?>
 <?php 
 
 if(isset($_POST['IdPresentazione'])){ //con secondo redirect non aveva piu id pres in post cosi risolvo

@@ -1,6 +1,8 @@
 <?php require('../Components/head.php'); ?>
 <?php require('../Components/navbar.php'); ?>
 <?php require('../Actions/connessioneDB.php'); ?>
+<?php $_SESSION['Pagina']= 'Amministratore' ?>
+<?php require('./Authentication/ControlloUtente.php'); ?>
 
 <?php $_SESSION['IdSessione'] = $_POST['IdSessione'];?>
 <title>Inserisci Presentazione</title>
